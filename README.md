@@ -1,2 +1,2 @@
 # urTribe-Frontend
-Repository used to urTribe frontend code 
+Repository used for urTribe frontend code 
