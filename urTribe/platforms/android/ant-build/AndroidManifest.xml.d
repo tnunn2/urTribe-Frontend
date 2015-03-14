@@ -1,2 +1,2 @@
-C:\Users\Thomas\se491\urTribe\platforms\android\ant-build\AndroidManifest.xml : \
-C:\Users\Thomas\se491\urTribe\platforms\android\AndroidManifest.xml \
+/Users/bdouglas/documents/personal/masters/urtribe/code/frontend-ionic/urtribe/platforms/android/ant-build/AndroidManifest.xml : \
+/Users/bdouglas/documents/personal/masters/urtribe/code/frontend-ionic/urtribe/platforms/android/AndroidManifest.xml \

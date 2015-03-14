@@ -1,4 +1,4 @@
-C:\Users\Thomas\se491\urTribe\platforms\android\ant-build\CordovaApp-debug-unaligned.apk : \
-C:\Users\Thomas\se491\urTribe\platforms\android\ant-build\CordovaApp.ap_ \
-C:\Users\Thomas\se491\urTribe\platforms\android\ant-build\classes.dex \
-C:\Users\Thomas\se491\urTribe\platforms\android\CordovaLib\ant-build\classes.jar \
+/Users/bdouglas/documents/personal/masters/urtribe/code/frontend-ionic/urtribe/platforms/android/ant-build/CordovaApp-debug-unaligned.apk : \
+/Users/bdouglas/documents/personal/masters/urtribe/code/frontend-ionic/urtribe/platforms/android/ant-build/CordovaApp.ap_ \
+/Users/bdouglas/documents/personal/masters/urtribe/code/frontend-ionic/urtribe/platforms/android/ant-build/classes.dex \
+/Users/bdouglas/Documents/Personal/Masters/UrTribe/CODE/frontend-ionic/urtribe/platforms/android/CordovaLib/ant-build/classes.jar \

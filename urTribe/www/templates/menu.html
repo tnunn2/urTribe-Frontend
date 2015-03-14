@@ -1,0 +1,36 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-positive">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left">
+    <ion-content>
+      <ion-list>
+        <ion-item nav-clear menu-close ng-click="createEvent()">
+          Create Event
+        </ion-item>
+        <ion-item nav-clear menu-close ng-click="login()">
+          Login
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>
+<div class="bar bar-footer bar-positive">
+  <div class="button-bar">
+    <a class="button button-icon icon ion-ios7-email"></a>
+    <a class="button button-icon icon ion-ios7-personadd"></a>
+    <a class="button button-icon icon ion-ios7-calendar" href="#/app/events"></a>
+    <a class="button button-icon icon ion-ios7-chatboxes"></a>
+  </div>
+
+</div>
