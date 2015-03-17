@@ -1,0 +1,28 @@
+<ion-view view-title="Events">
+  <ion-content>
+    <div class="row">
+      <div class="col col-50">
+        <div class="btn-group block-dropdown" dropdown>
+          <button type="button" class="btn btn-default btn-block dropdown-toggle" dropdown-toggle>
+            {{selectedEventType.name}}
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li ng-repeat="eventType in eventTypes">
+              <a ng-click="setEventType(eventType)">{{eventType.name}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <button class="button button-block icon-left ion-plus-circled button-dark" ng-click="createEvent()">Create</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h1>{{currentEvent.name}}</h1>
+        <h2>{{overview}}</h2>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

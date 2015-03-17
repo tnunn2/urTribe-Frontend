@@ -1,0 +1,64 @@
+/* Empty. Add your own CSS if you like */
+
+
+body
+{
+  text-align:center;
+}
+
+.urtribe-logo
+{
+  width:80%;
+  max-width:600px;
+  margin:0px auto;
+}
+
+.button.button-block, .button.button-full {
+  margin:0px;
+}
+
+.block-dropdown
+{
+  width:100%;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default.focus, .btn-default:active, .btn-default.active, .open>.dropdown-toggle.btn-default
+{
+  color: #333;
+  background-color: #ffffff;
+}
+
+.block-dropdown .btn .caret {
+  margin-left: 0;
+  float: right;
+  margin-top: 8px;
+}
+
+.block-dropdown button
+{
+  height: 47px;
+}
+
+.form-section-header
+{
+  text-align: left;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 10px;
+  color: #44becc;
+}
+
+
+
+.input-label
+{
+  color: #AAAAAA;
+  font-size: 14px;
+  text-align: left;
+}
+
+.item-stacked-label .input-label
+{
+  text-align: left;
+  display:block;
+}
