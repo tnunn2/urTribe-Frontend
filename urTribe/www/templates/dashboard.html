@@ -1,0 +1,57 @@
+<ion-view view-title="Dashboard">
+  <ion-content>
+    <div class="row dashboard-availability">
+      <div class="col toggle-label">Availabile</div>
+      <div class="col toggle-btn">
+        <label class="toggle toggle-balanced">
+          <input type="checkbox">
+            <div class="track">
+              <div class="handle"></div>
+            </div>
+        </label>
+      </div>
+    </div>
+    <div class="form-section-header">TODAY'S EVENTS</div>
+    <accordion id="todayEvents">
+      <accordion-group is-open="event1.open">
+        <accordion-heading>
+            Event 1 Title - 6:00 PM <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': event1.open, 'glyphicon-chevron-right': !event1.open}"></i>
+        </accordion-heading>
+        <div class="event-summary">
+          <div class="event-title">
+            Jim's Bar
+          </div>
+          <div class="event-location">
+            <a href="#">123 Main Street, Chicago, IL</a>
+          </div>
+          <div class="event-cta">
+            <div class="button-bar">
+              <a class="button button-small">12 Attending</a>
+              <a class="button button-small button-cta">More</a>
+            </div>
+          </div>
+        </div>
+      </accordion-group>
+      <accordion-group is-open="event2.open">
+        <accordion-heading>
+            Event 2 Title - 8:00 PM<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': event2.open, 'glyphicon-chevron-right': !event2.open}"></i>
+        </accordion-heading>
+        <div class="event-summary">
+          <div class="event-title">
+            Jim's Bar
+          </div>
+          <div class="event-location">
+            <a href="#">123 Main Street, Chicago, IL</a>
+          </div>
+          <div class="event-cta">
+            <div class="button-bar">
+              <a class="button button-small">12 Attending</a>
+              <a class="button button-small button-cta">More</a>
+            </div>
+          </div>
+        </div>
+      </accordion-group>
+    </accordion>
+    <div class="form-section-header header-top-space">WHO'S AROUND</div>
+  </ion-content>
+</ion-view>
