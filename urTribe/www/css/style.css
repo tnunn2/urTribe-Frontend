@@ -76,6 +76,7 @@ ion-side-menu .item
 .item-checkbox
 {
   text-align:left;
+  height: 68px;
 }
 
 #invitePeople
@@ -180,6 +181,12 @@ ion-side-menu .item
 #aroundHeader div:first-child
 {
   margin-top:5px;
+}
+
+.contact-select
+{
+  margin-left:40px;
+  margin-top: -4px;
 }
 
 .contact-select .contact-thumb
