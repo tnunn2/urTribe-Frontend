@@ -68,6 +68,35 @@ ion-side-menu .item
   text-align:left;
 }
 
+.radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"]
+{
+  margin-left:0px;
+}
+
+.item-checkbox
+{
+  text-align:left;
+}
+
+#invitePeople
+{
+  margin: 40px 0px;
+  font-size:16px;
+  border-top: 1px solid  #AAAAAA;
+  border-bottom: 1px solid #AAAAAA;
+  cursor:pointer;
+}
+
+#invitePeople div:first-child
+{
+  text-align:left;
+}
+
+#invitePeople div:last-child
+{
+  text-align:right;
+}
+
 
 /************************************************************
 
@@ -139,4 +168,51 @@ ion-side-menu .item
 .header-top-space
 {
   margin-top:25px;
+}
+
+#inviteAround
+{
+  width:80%;
+  font-size:14px;
+  font-weight:bold;
+}
+
+#aroundHeader div:first-child
+{
+  margin-top:5px;
+}
+
+.contact-select .contact-thumb
+{
+  width:40px;
+  height:40px;
+  display:block;
+  background-color:#696765;
+  float:left;
+}
+
+.contact-select .contact-info
+{
+  float:left;
+  margin-left:8px;
+}
+
+.contact-select .contact-info div
+{
+  clear:both;
+}
+
+.contact-info .contact-name
+{
+  font-size:18px;
+}
+
+.contact-info .contact-distance
+{
+  font-size:14px;
+}
+
+.contact-name .ion-record
+{
+  color:#33cd5f;
 }
