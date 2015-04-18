@@ -1,6 +1,10 @@
 var urtribeControllers = angular.module('urtribe.controllers', ['ui.bootstrap', 'urtribe.models'])
 
-urtribeControllers.controller('MainController', function($scope, $ionicModal, $timeout) {
+urtribeControllers.controller('MainController', function($scope, $ionicModal, $timeout, $ionicHistory) {
+
+  $scope.goBack = function() {
+    $ionicHistory.goBack();
+  };
 
   $ionicModal.fromTemplateUrl('templates/createEvent.html', {
     scope: $scope

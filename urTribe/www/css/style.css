@@ -98,6 +98,11 @@ ion-side-menu .item
   text-align:right;
 }
 
+.confirmed
+{
+  color: #33cd5f;
+}
+
 
 /************************************************************
 
@@ -222,4 +227,70 @@ ion-side-menu .item
 .contact-name .ion-record
 {
   color:#33cd5f;
+}
+
+/************************************************************
+
+                     Events Styles
+
+*************************************************************/
+
+.event-overview
+{
+  text-align:left;
+  padding: 0px 6px;
+  border-bottom: 2px solid #AAAAAA;
+  margin-top:10px;
+}
+
+.event-overview .title
+{
+  font-size: 17px;
+  font-weight: bold;
+  width:98%;
+}
+
+.event-overview .attendance span
+{
+  font-size:29px;
+}
+
+.event-overview .time, .event-overview .location
+{
+  margin:5px;
+  font-size:14px;
+}
+
+.event-overview .location span
+{
+  margin-right:6px;
+}
+
+/************************************************************
+
+                     Event View Styles
+
+*************************************************************/
+.event-view-summary
+{
+  text-align:left;
+}
+
+.event-view-summary .event-title
+{
+  font-weight:bold;
+  font-size:16px;
+}
+
+.event-view-summary .event-created
+{
+  font-size:14px;
+  margin-bottom:5px;
+}
+
+.event-view-options .attendance-status span
+{
+  font-size: 22px;
+  display: block;
+  float: right;
 }

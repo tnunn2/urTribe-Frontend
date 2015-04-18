@@ -26,7 +26,6 @@ angular.module('urtribe', ['ionic', 'urtribe.controllers'])
 
   .state('app', {
     url: "/app",
-    abstract: true,
     templateUrl: "templates/menu.html",
     controller: 'MainController'
   })
@@ -87,6 +86,20 @@ angular.module('urtribe', ['ionic', 'urtribe.controllers'])
       'menuContent': {
         templateUrl: "templates/events.html",
         controller: 'EventsController'
+      }
+    }
+  })
+  .state('app.event', {
+    url: "/event:eventID",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/event.html",
+        controller: 'EventController',
+        resolve: {
+          event: function($stateParams) {
+            return $stateParams.eventID;
+          }
+        }
       }
     }
   });

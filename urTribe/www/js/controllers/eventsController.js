@@ -1,10 +1,14 @@
 urtribeControllers.controller('EventsController', function($scope, Event) {
+  
     $scope.currentEvent = Event.build({name:'MyEvent'});
     $scope.overview = $scope.currentEvent.getEventOverview();
 
     $scope.eventTypes = [
           {name: 'Upcomming'},
-          {name: 'Past'}];
+          {name: 'Invites'},
+          {name: 'Hosting'},
+          {name: 'Past'}
+          ];
 
     $scope.selectedEventType = $scope.eventTypes[0];
 
