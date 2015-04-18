@@ -1,4 +1,4 @@
-var urtribeControllers = angular.module('urtribe.controllers', ['ui.bootstrap', 'urtribe.models'])
+var urtribeControllers = angular.module('urtribe.controllers', ['ui.bootstrap', 'urtribe.models','monospaced.elastic'])
 
 urtribeControllers.controller('MainController', function($scope, $ionicModal, $timeout, $ionicHistory) {
 
