@@ -1,6 +1,6 @@
-var urtribeControllers = angular.module('urtribe.controllers', ['ui.bootstrap', 'urtribe.models','monospaced.elastic'])
+var urtribeControllers = angular.module('urtribe.controllers', ['ui.bootstrap', 'urtribe.models','monospaced.elastic', 'urtribe.services'])
 
-urtribeControllers.controller('MainController', function($scope, $ionicModal, $ionicPopup, $timeout, $ionicHistory) {
+urtribeControllers.controller('MainController', function($scope, $ionicModal, $ionicPopup, $timeout, $ionicHistory, MessageService) {
 
   $scope.goBack = function() {
     $ionicHistory.goBack();
@@ -28,7 +28,6 @@ urtribeControllers.controller('MainController', function($scope, $ionicModal, $i
 
   //Message notification test
   $scope.showPopup = function() {
-
     $scope.data = {}
   // An elaborate, custom popup
     var myPopup = $ionicPopup.show({
@@ -43,5 +42,7 @@ urtribeControllers.controller('MainController', function($scope, $ionicModal, $i
       console.log('Tapped!', res);
     });
   };
+
+  MessageService.initialize();
 
 })
