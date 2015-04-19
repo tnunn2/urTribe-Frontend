@@ -6,27 +6,10 @@ urtribeControllers.controller('MainController', function($scope, $ionicModal, $i
     $ionicHistory.goBack();
   };
 
-  //TODO - create message handler singleton here - create class and instantiate
+  MessageService.initialize();
 
   //TODO - create API handler singleton here - create class and instantiate
 
-  //Message notification test
-  $scope.showPopup = function() {
-    $scope.data = {}
-  // An elaborate, custom popup
-    var myPopup = $ionicPopup.show({
-      templateUrl: 'templates/eventInviteNotificationPopup.html',
-      title: "You're Invited!",
-      scope: $scope,
-      buttons: [
-        { text: 'Close' }
-      ]
-    });
-    myPopup.then(function(res) {
-      console.log('Tapped!', res);
-    });
-  };
 
-  MessageService.initialize();
 
 })
