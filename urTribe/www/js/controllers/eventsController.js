@@ -1,5 +1,5 @@
-urtribeControllers.controller('EventsController', function($scope, Event) {
-  
+urtribeControllers.controller('EventsController', function($scope, Event, $ionicModal) {
+
     $scope.currentEvent = Event.build({name:'MyEvent'});
     $scope.overview = $scope.currentEvent.getEventOverview();
 
@@ -34,4 +34,19 @@ urtribeControllers.controller('EventsController', function($scope, Event) {
       $scope.status.isopen = !$scope.status.isopen;
     };
 
-  })
+    $ionicModal.fromTemplateUrl('templates/createEvent.html', {
+      scope: $scope
+    }).then(function(modal) {
+      $scope.eventModal = modal;
+    });
+
+    // Triggered in the login modal to close it
+    $scope.closeCreateEvent = function() {
+      $scope.eventModal.hide();
+    };
+
+    // Open the login modal
+    $scope.createEvent = function() {
+      $scope.eventModal.show();
+    };
+})

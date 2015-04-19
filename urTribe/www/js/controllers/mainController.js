@@ -6,22 +6,6 @@ urtribeControllers.controller('MainController', function($scope, $ionicModal, $i
     $ionicHistory.goBack();
   };
 
-  $ionicModal.fromTemplateUrl('templates/createEvent.html', {
-    scope: $scope
-  }).then(function(modal) {
-    $scope.eventModal = modal;
-  });
-
-  // Triggered in the login modal to close it
-  $scope.closeCreateEvent = function() {
-    $scope.eventModal.hide();
-  };
-
-  // Open the login modal
-  $scope.createEvent = function() {
-    $scope.eventModal.show();
-  };
-
   //TODO - create message handler singleton here - create class and instantiate
 
   //TODO - create API handler singleton here - create class and instantiate
