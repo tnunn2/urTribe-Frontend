@@ -428,3 +428,59 @@ ion-side-menu .item
   width:100%;
   display:block;
 }
+
+/************************************************************
+
+                     Event Notification Popup
+
+*************************************************************/
+
+.popup-buttons
+{
+  min-height: 41px;
+  padding: 0px;
+}
+
+.event-notification-popup
+{
+  text-align:left;
+  font-size:16px;
+  width: 90%;
+  margin: 0px auto;
+}
+
+.event-notification-popup .title
+{
+  font-weight:bold;
+  margin:5px 0px;
+  color:#098894;
+}
+
+.event-notification-popup .location span
+{
+  margin-left: 3px;
+  margin-right: 4px;
+}
+
+.event-notification-popup .location
+{
+  margin: 5px 0px 10px;
+}
+
+.popup-title {
+  margin: 0;
+  padding: 0;
+  font-size: 24px;
+}
+
+.popup-container .popup {
+  width: 274px;
+}
+
+.event-notification-popup .details-btn
+{
+  font-weight:bold;
+  width: 95px;
+  float:right;
+  margin-bottom: 34px;
+}
