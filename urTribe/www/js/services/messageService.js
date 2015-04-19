@@ -1,5 +1,5 @@
 var urtribeServices = angular.module('urtribe.services', [])
-urtribeServices.factory('MessageService', function ($ionicPopup) {
+urtribeServices.factory('MessageService', function ($ionicPopup, $rootScope) {
   var storageRef;
   var applicationKey = "kSVcgZ";
   var authenticationToken = "PhoneTestUserToken";
@@ -75,9 +75,12 @@ urtribeServices.factory('MessageService', function ($ionicPopup) {
       if(itemSnapshot!=null)
       {
         console.log(itemSnapshot.val());
+        var $notificationScope = $rootScope.$new(true);
+        $notificationScope.item = itemSnapshot.val();
         var myPopup = $ionicPopup.show({
           templateUrl: 'templates/eventInviteNotificationPopup.html',
           title: "You're Invited!",
+          scope: $notificationScope,
           buttons: [
             { text: 'Close' }
           ]

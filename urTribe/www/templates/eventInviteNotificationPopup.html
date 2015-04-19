@@ -1,15 +1,15 @@
 <div class="event-notification-popup">
   <div class="inviter">
-    Tina Burkhart invited you to:
+    {{item.inviterName}} invited you to:
   </div>
   <div class="title">
-    Soft Speaker and Deadlands Show
+    {{item.title}}
   </div>
   <div class="time">
-    <span class="ion-clock"></span> May 10 at 7:00PM
+    <span class="ion-clock"></span> {{item.dateTime}}
   </div>
   <div class="location">
-    <span class="ion-location"></span> Empty Bottle
+    <span class="ion-location"></span> {{item.location}}
   </div>
   <button class="button button-outline button-calm button-small details-btn">
     Details
