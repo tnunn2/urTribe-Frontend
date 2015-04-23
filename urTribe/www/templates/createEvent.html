@@ -1,33 +1,84 @@
+<form name="createEvent_form" novalidate ng-submit="submitEvent(eventInfo,createEvent_form.$valid)" >
 <ion-modal-view>
     <ion-header-bar class="bar-positive">
       <div class="buttons">
-        <button class="button button-clear" ng-click="closeCreateEvent()">Close</button>
+        <button class="button button-clear" ng-click="closeCreateEvent($event)">Close</button>
       </div>
       <h1 class="title">Create Event</h1>
       <div class="buttons">
-        <button class="button button-clear" ng-click="createEvent()">Done</button>
+        <button type="submit" class="button button-clear">Submit</button>
       </div>
     </ion-header-bar>
     <ion-content>
       <div class="list">
         <label class="item item-input">
-          <input type="text" placeholder="Event Name">
+          <input type="text" ng-class="{error: createEvent_form.eventName.$dirty && createEvent_form.eventName.$invalid}"
+                 placeholder="Event Name" name="eventName"
+                 ng-model="eventInfo.EventName"
+                 ng-minlength=3
+                 required
+                 ng-focus>
         </label>
+        <small class="error" ng-show="(submitted || createEvent_form.eventName.$blur) && createEvent_form.eventName.$pristine">Please enter event name</small>
+        <div class="error-container" ng-show="createEvent_form.eventName.$dirty && createEvent_form.eventName.$invalid && !createEvent_form.eventName.$focused")>
+          <small class="error" ng-show="createEvent_form.eventName.$error.required">Please input a event Name</small>
+          <small class="error" ng-show="createEvent_form.eventName.$error.minlength">Your event name is required to be at least 3 characters</small>
+        </div>
         <label class="item item-input">
-          <textarea placeholder="Description" rows="5"></textarea>
+          <textarea ng-class="{error: createEvent_form.eventDescription.$dirty && createEvent_form.eventDescription.$invalid}"
+                    placeholder="Description" name="eventDescription"
+                    ng-model="eventInfo.Description"
+                    required
+                    rows="5"
+                    ng-focus>
+          </textarea>
         </label>
+        <small class="error" ng-show="(submitted || createEvent_form.eventDescription.$blur) && createEvent_form.eventDescription.$pristine">Please enter event description</small>
+        <div class="error-container" ng-show="createEvent_form.eventDescription.$dirty && createEvent_form.eventDescription.$invalid && !createEvent_form.eventDescription.$focused")>
+          <small class="error" ng-show="createEvent_form.eventDescription.$error.required">Please enter event description</small>
+        </div>
       </div>
       <div class="list">
         <div class="form-section-header">LOCATION</div>
         <label class="item item-input">
-          <input type="text" placeholder="Name">
+          <input type="text" ng-class="{error: createEvent_form.eventLocationName.$dirty && createEvent_form.eventLocationName.$invalid}"
+                 placeholder="Name" name="eventLocationName"
+                 ng-model="eventInfo.eventLocationName"
+                 required
+                 ng-minlength=5
+                 ng-focus>
         </label>
+        <small class="error" ng-show="(submitted || createEvent_form.eventLocationName.$blur) && createEvent_form.eventLocationName.$pristine">Please enter location name</small>
+        <div class="error-container" ng-show="createEvent_form.eventLocationName.$dirty && createEvent_form.eventLocationName.$invalid && !createEvent_form.eventLocationName.$focused")>
+          <small class="error" ng-show="createEvent_form.eventLocationName.$error.required">Please enter location name</small>
+          <small class="error" ng-show="createEvent_form.eventLocationName.$error.minlength">Event location is required to be at least 5 characters</small>
+        </div>
         <label class="item item-input">
-          <input type="text" placeholder="Street Address">
+          <input type="text"
+                 placeholder="Street Address" name="eventStreetAddress"
+                 ng-model="eventInfo.eventStreetAddress"
+                 required
+                 ng-minlength=5
+                 ng-focus>
         </label>
+        <small class="error" ng-show="(submitted || createEvent_form.eventStreetAddress.$blur) && createEvent_form.eventStreetAddress.$pristine">Please enter street address</small>
+        <div class="error-container" ng-show="createEvent_form.eventStreetAddress.$dirty && createEvent_form.eventStreetAddress.$invalid && !createEvent_form.eventStreetAddress.$focused")>
+          <small class="error" ng-show="createEvent_form.eventStreetAddress.$error.required">Please enter street address</small>
+          <small class="error" ng-show="createEvent_form.eventStreetAddress.$error.minlength">Street address is required to be at least 5 characters</small>
+        </div>
         <label class="item item-input">
-          <input type="text" placeholder="City">
+          <input type="text"
+                 placeholder="City" name="eventCity"
+                 ng-model="eventInfo.eventCity"
+                 required
+                 ng-minlength=5
+                 ng-focus>
         </label>
+        <small class="error" ng-show="(submitted || createEvent_form.eventCity.$blur) && createEvent_form.eventCity.$pristine">Please enter city</small>
+        <div class="error-container" ng-show="createEvent_form.eventCity.$dirty && createEvent_form.eventCity.$invalid && !createEvent_form.eventCity.$focused")>
+          <small class="error" ng-show="createEvent_form.eventCity.$error.required">Please enter city</small>
+          <small class="error" ng-show="createEvent_form.eventCity.$error.minlength">City is required to be at least 5 characters</small>
+        </div>
         <label class="item item-input item-select">
           <div class="input-label">
             State
@@ -38,23 +89,55 @@
           </select>
         </label>
         <label class="item item-input">
-          <input type="text" placeholder="Zip">
+          <input type="text"
+                 placeholder="Zip" name="eventZip"
+                 ng-model="eventInfo.eventZip"
+                 required
+                 ng-minlength=5
+                 ng-maxlength=5
+                 ng-focus>
         </label>
+        <small class="error" ng-show="(submitted || createEvent_form.eventZip.$blur) && createEvent_form.eventZip.$pristine">Please enter zip code</small>
+        <div class="error-container" ng-show="createEvent_form.eventZip.$dirty && createEvent_form.eventZip.$invalid && !createEvent_form.eventZip.$focused")>
+          <small class="error" ng-show="createEvent_form.eventZip.$error.required">Please enter zip code</small>
+          <small class="error" ng-show="createEvent_form.eventZip.$error.minlength">Zip code is required to be 5 numbers</small>
+        </div>
       </div>
       <div class="list">
         <div class="form-section-header">DATE AND TIME</div>
         <label class="item item-input item-stacked-label">
           <span class="input-label">Date</span>
-          <input type="date"/>
+          <input type="date" name="eventDate"
+                 ng-model="eventInfo.eventDate"
+                 required
+                 ng-focus/>
         </label>
+        <small class="error" ng-show="(submitted || createEvent_form.eventDate.$blur) && createEvent_form.eventDate.$pristine">Please enter date</small>
+        <div class="error-container" ng-show="createEvent_form.eventDate.$dirty && createEvent_form.eventDate.$invalid && !createEvent_form.eventDate.$focused")>
+          <small class="error" ng-show="createEvent_form.eventDate.$error.required">Please enter date</small>
+        </div>
         <label class="item item-input item-stacked-label">
           <span class="input-label">Start Time</span>
-          <input type="time"/>
+          <input type="time" name="eventStartTime"
+                 ng-model="eventInfo.eventStartTime"
+                 required
+                 ng-focus/>
         </label>
+        <small class="error" ng-show="(submitted || createEvent_form.eventStartTime.$blur) && createEvent_form.eventStartTime.$pristine">Please enter start time</small>
+        <div class="error-container" ng-show="createEvent_form.eventStartTime.$dirty && createEvent_form.eventStartTime.$invalid && !createEvent_form.eventStartTime.$focused")>
+          <small class="error" ng-show="createEvent_form.eventStartTime.$error.required">Please enter start time</small>
+        </div>
         <label class="item item-input item-stacked-label">
           <span class="input-label">End Time</span>
-          <input type="time"/>
+          <input type="time" name="eventEndTime"
+                 ng-model="eventInfo.eventEndTime"
+                 required
+                 ng-focus/>
         </label>
+        <small class="error" ng-show="(submitted || createEvent_form.eventEndTime.$blur) && createEvent_form.eventEndTime.$pristine">Please enter end time</small>
+        <div class="error-container" ng-show="createEvent_form.eventEndTime.$dirty && createEvent_form.eventEndTime.$invalid && !createEvent_form.eventEndTime.$focused")>
+          <small class="error" ng-show="createEvent_form.eventEndTime.$error.required">Please enter end time</small>
+        </div>
       </div>
       <div class="row" id="invitePeople">
         <div class="col">
@@ -66,3 +149,4 @@
       </div>
     </ion-content>
   </ion-modal-view>
+</form>
