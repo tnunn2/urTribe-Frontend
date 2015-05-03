@@ -6,10 +6,9 @@ urtribeControllers.controller('MainController', function($scope, $ionicModal, $i
     $ionicHistory.goBack();
   };
 
-  MessageService.initialize();
-
-  //TODO - create API handler singleton here - create class and instantiate
-
-
+  MessageService.initialize(function(response){
+    console.log(response);
+    //TODO - create API handler singleton here - create class and instantiate
+  });
 
 })

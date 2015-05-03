@@ -10,8 +10,7 @@ urtribeServices.factory('MessageService', function ($ionicPopup, $rootScope) {
 
   MessageService.initialize = function() {
     //connect to realtime framework
-    connectRealTime(function(response){
-      console.log(response);
+    MessageService.connectRealTime(function(response){
       if(response.error)
       {
         console.error(response.error);
@@ -29,25 +28,20 @@ urtribeServices.factory('MessageService', function ($ionicPopup, $rootScope) {
 
   //handle notifications
 
-  function connectRealTime(callback) {
+   MessageService.connectRealTime = function(callback) {
     //authenticate User with Realtime Framework
     // Create a storage reference
     storageRef = Realtime.Storage.create({
 	     applicationKey: applicationKey,
 	     authenticationToken: authenticationToken
     });
-    console.log(authenticationToken);
     authUser(function(response){
       if(!response)
       {
         callback(JSON.stringify({"error": "User not authenticated with realtime framework"}));
       }
-
-      console.log(storageRef);
-
       //Create a reference to the users table
       var tableRef = storageRef.table(userTableName);
-      console.log(tableRef);
       callback(JSON.stringify({"success": "User authenticated"}));
     });
   }
@@ -55,7 +49,6 @@ urtribeServices.factory('MessageService', function ($ionicPopup, $rootScope) {
   function authUser(callback) {
     storageRef.isAuthenticated(authenticationToken,
     	function success(data) {
-        console.log("Success auth");
     		callback(true);
     	},
     	function error(data) {
@@ -74,7 +67,6 @@ urtribeServices.factory('MessageService', function ($ionicPopup, $rootScope) {
     tableRef.on("update", function(itemSnapshot) {
       if(itemSnapshot!=null)
       {
-        console.log(itemSnapshot.val());
         var $notificationScope = $rootScope.$new(true);
         $notificationScope.item = itemSnapshot.val();
         var myPopup = $ionicPopup.show({
