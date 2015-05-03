@@ -16,6 +16,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
 
     files: [
+      'lib/bind-polyfill/index.js',
       'lib/ionic/js/ionic.bundle.js',
       'lib/angular-bootstrap/ui-bootstrap-tpls.js',
       'lib/angular-elastic/elastic.js',
@@ -64,7 +65,7 @@ module.exports = function(config) {
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_DISABLE,
+    logLevel: config.LOG_INFO,
 
 
     // enable / disable watching file and executing tests whenever any file changes
@@ -73,7 +74,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Firefox'],
+    browsers: ['PhantomJS'],
 
 
     // Continuous Integration mode
