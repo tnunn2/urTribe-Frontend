@@ -36,6 +36,7 @@
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/img \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/index.html \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/js \
+/Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/karma.conf.js \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/lib \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/plugins \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/templates \
@@ -56,6 +57,8 @@
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/js/app.js \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/js/controllers \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/js/models \
+/Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/js/services \
+/Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/js/tests \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/js/controllers/contactsController.js \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/js/controllers/dashboardController.js \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/js/controllers/eventController.js \
@@ -65,13 +68,17 @@
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/js/controllers/profileController.js \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/js/controllers/settingsController.js \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/js/models/event.js \
+/Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/js/services/messageService.js \
+/Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/js/tests/messageServiceTests.js \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/lib/angular \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/lib/angular-animate \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/lib/angular-bootstrap \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/lib/angular-elastic \
+/Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/lib/angular-mocks \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/lib/angular-sanitize \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/lib/angular-ui-router \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/lib/ionic \
+/Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/lib/realtime-framework \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/lib/angular/angular-csp.css \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/lib/angular/angular.js \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/lib/angular/angular.min.js \
@@ -97,6 +104,13 @@
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/lib/angular-elastic/LICENCE.txt \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/lib/angular-elastic/package.json \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/lib/angular-elastic/README.md \
+/Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/lib/angular-mocks/angular-mocks.js \
+/Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/lib/angular-mocks/bower.json \
+/Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/lib/angular-mocks/ngAnimateMock.js \
+/Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/lib/angular-mocks/ngMock.js \
+/Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/lib/angular-mocks/ngMockE2E.js \
+/Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/lib/angular-mocks/package.json \
+/Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/lib/angular-mocks/README.md \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/lib/angular-sanitize/angular-sanitize.js \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/lib/angular-sanitize/angular-sanitize.min.js \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/lib/angular-sanitize/angular-sanitize.min.js.map \
@@ -142,6 +156,7 @@
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/lib/ionic/js/ionic.bundle.min.js \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/lib/ionic/js/ionic.js \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/lib/ionic/js/ionic.min.js \
+/Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/lib/realtime-framework/realtime-sdk.min.js \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/plugins/com.ionic.keyboard \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/plugins/com.plugin.datepicker \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/plugins/org.apache.cordova.device \
@@ -156,6 +171,7 @@
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/templates/createEvent.html \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/templates/dashboard.html \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/templates/event.html \
+/Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/templates/eventInviteNotificationPopup.html \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/templates/events.html \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/templates/help.html \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/templates/menu.html \
