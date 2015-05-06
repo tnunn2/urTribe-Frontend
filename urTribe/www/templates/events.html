@@ -18,52 +18,34 @@
         <button class="button button-block icon-left ion-plus-circled button-dark" ng-click="createEvent()">Create</button>
       </div>
     </div>
-    <div class="event-overview" id="event1">
+    <div ng-repeat="event in Events" class="event-overview" id="{{event.EventID}}">
       <div class="row">
         <div class="col-90">
           <div class="title">
-            <a href="#/app/event:1">Soft Speaker and Deadlands at the Empty Bottle</a>
+            <a href="#/app/event:{{event.EventID}}">{{event.EventName}}</a>
           </div>
           <div class="time">
-            <span class="ion-clock"></span> May 10 at 7:00PM
+            <span class="ion-clock"></span> {{ event.DateTimeStart | date : "MMMM d 'at' h:mm a"}}
           </div>
           <div class="location">
-            <span class="ion-location"></span> Empty Bottle
+            <span class="ion-location"></span> {{event.LocationName}}
           </div>
         </div>
         <div class="col-10 attendance">
-          <span class="ion-android-checkbox confirmed"></span>
+          <span ng-if="event.AttendanceStatus == 'Attending'" class="ion-android-checkbox confirmed"></span>
         </div>
       </div>
-      <div class="row">
+      <div class="row" ng-if="event.AttendanceStatus == 'Attending' || event.AttendanceStatus == 'Maybe'">
         <div class="col">
           <div class="event-cta">
             <div class="button-bar">
-              <a class="button button-small">12 Attending</a>
+              <!--<a class="button button-small">12 Attending</a>-->
               <a class="button button-small button-cta" href="#/app/event:1">More</a>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="event-overview" id="event2">
-      <div class="row">
-        <div class="col-90">
-          <div class="title">
-            <a href="#/app/event:2">Drinks after work</a>
-          </div>
-          <div class="time">
-            <span class="ion-clock"></span> May 12 at 6:00PM
-          </div>
-          <div class="location">
-            <span class="ion-location"></span> Primebar
-          </div>
-        </div>
-        <div class="col-10 attendance">
-
-        </div>
-      </div>
-      <div class="row">
+      <div class="row" ng-if="event.AttendanceStatus == 'Invited'">
         <div class="col">
           <div class="event-cta">
             <div class="button-bar">
@@ -74,6 +56,6 @@
           </div>
         </div>
       </div>
-    </div>
+    </div>    
   </ion-content>
 </ion-view>
