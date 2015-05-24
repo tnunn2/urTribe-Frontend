@@ -7,9 +7,6 @@ urtribeControllers.controller('MainController', function($scope, $ionicModal, $i
   };
 
   MessageService.initialize();
-
   //TODO - create API handler singleton here - create class and instantiate
-
-
 
 })

@@ -1,27 +1,45 @@
-[
+{
+  "Status":"success",
+  "Data":
     {
-      "EventID": "event1",
-      "EventName": "My event 1",
-      "DateTimeStart": "2015-05-17T11:00:00-06:00",
-      "LocationName": "Another Bar",
-      "LocationAddress":  "123 Main Street",
-      "AttendanceStatus": "Attending"
-    },
-    {
-      "EventID": "event2",
-      "EventName": "Another event 2",
-      "DateTimeStart": "2015-05-24T20:00:00-06:00",
-      "LocationName": "A Music Venue",
-      "LocationAddress":  "67 Melrose",
-      "AttendanceStatus": "Maybe"
-    },
-    {
-      "EventID": "event3",
-      "EventName": "This event",
-      "DateTimeStart": "2015-05-30T18:00:00-06:00",
-      "LocationName": "A Cafe",
-      "LocationAddress":  "39 Berenice",
-      "AttendanceStatus": "Invited"
+      "EventList":
+        [
+          {
+            "ID":"8846bdc1-735d-4d82-aa5e-f2b99dc2d467",
+            "Name":"Meetup at Everyday is a Sundae",
+            "Active":true,
+            "Time":635675942345748788,
+            "Location":"Meetup at Everyday is a Sundae",
+            "Street1":"1002 Summer Place",
+            "Street2":null,
+            "City":"Rosemont",
+            "State":"IL",
+            "Zip":"61506"
+          },
+          {
+            "ID":"8846bdc1-735d-4d82-aa5e-lksdkjh8kj",
+            "Name":"A Music Show Outing",
+            "Active":true,
+            "Time":635675942345748788,
+            "Location":"A Music Venue",
+            "Street1":"200 Music Drive",
+            "Street2":null,
+            "City":"Chicago",
+            "State":"IL",
+            "Zip":"60634"
+          },
+          {
+            "ID":"8846bdc1-735d-4d82-aa5e-238728934j",
+            "Name":"Movie Night",
+            "Active":true,
+            "Time":635675942345748788,
+            "Location":"My house",
+            "Street1":"3150 Byron",
+            "Street2":null,
+            "City":"Chicago",
+            "State":"IL",
+            "Zip":"60601"
+          }
+        ]
     }
-
-  ]
+}

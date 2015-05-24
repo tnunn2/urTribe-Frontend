@@ -1,8 +1,7 @@
-urtribeControllers.controller('EventsController', function($scope, Event, $ionicModal) {
+urtribeControllers.controller('EventsController', function($scope, Event, $ionicModal, APIService) {
 
-    $scope.currentEvent = Event.build({name:'MyEvent'});
-    $scope.overview = $scope.currentEvent.getEventOverview();
-    $scope.eventInfo = {};
+    $scope.Events;
+
     $scope.submitted = false;
 
     $scope.eventTypes = [
@@ -15,7 +14,7 @@ urtribeControllers.controller('EventsController', function($scope, Event, $ionic
     $scope.selectedEventType = $scope.eventTypes[0];
 
     $scope.setEventType = function(eventType) {
-          $scope.selectedEventType = eventType;
+      $scope.selectedEventType = eventType;
     }
 
     $scope.eventTypeSelected = function(eventType) {
@@ -35,6 +34,11 @@ urtribeControllers.controller('EventsController', function($scope, Event, $ionic
       $event.stopPropagation();
       $scope.status.isopen = !$scope.status.isopen;
     };
+
+    //Get User Events
+    APIService.getEvents(function(events){
+      $scope.Events = events;
+    });
 
 
     $scope.submitEvent = function(event,isCreateEventFormValid){

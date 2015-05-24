@@ -1,7 +1,8 @@
-urtribeControllers.controller('EventsController', function($scope, Event, $ionicModal) {
+urtribeControllers.controller('EventsController', function($scope, Event, $ionicModal, APIService) {
 
-    $scope.currentEvent = Event.build({name:'MyEvent'});
-    $scope.overview = $scope.currentEvent.getEventOverview();
+    $scope.Events;
+
+    $scope.submitted = false;
 
     $scope.eventTypes = [
           {name: 'Upcomming'},
@@ -13,7 +14,7 @@ urtribeControllers.controller('EventsController', function($scope, Event, $ionic
     $scope.selectedEventType = $scope.eventTypes[0];
 
     $scope.setEventType = function(eventType) {
-          $scope.selectedEventType = eventType;
+      $scope.selectedEventType = eventType;
     }
 
     $scope.eventTypeSelected = function(eventType) {
@@ -34,19 +35,58 @@ urtribeControllers.controller('EventsController', function($scope, Event, $ionic
       $scope.status.isopen = !$scope.status.isopen;
     };
 
-    $ionicModal.fromTemplateUrl('templates/createEvent.html', {
-      scope: $scope
-    }).then(function(modal) {
-      $scope.eventModal = modal;
+    //Get User Events
+    APIService.getEvents(function(events){
+      $scope.Events = events;
     });
 
+
+    $scope.submitEvent = function(event,isCreateEventFormValid){
+
+      if (isCreateEventFormValid){
+
+      } else {
+        $scope.submitted = true;
+      }
+
+    }
+
     // Triggered in the login modal to close it
-    $scope.closeCreateEvent = function() {
+    $scope.closeCreateEvent = function($event) {
+      $scope.submitted = false;
+      $event.preventDefault();
+
       $scope.eventModal.hide();
+      $scope.eventModel.remove();
     };
 
     // Open the login modal
     $scope.createEvent = function() {
-      $scope.eventModal.show();
+      $ionicModal.fromTemplateUrl('templates/createEvent.html', {
+        scope: $scope,
+        focusFirstInput: true,
+        backdropClickToClose: false
+      }).then(function(modal) {
+        $scope.eventModal = modal;
+        $scope.eventModal.show();
+      });
     };
 })
+
+urtribeControllers.directive('ngFocus', [function() {
+  var FOCUS_CLASS = "ng-focused";
+  return {
+    restrict: 'A',
+    require: 'ngModel',
+    link: function(scope, element, attrs, ctrl) {
+      ctrl.$focused = false;
+      element.bind('focus', function(evt) {
+        element.addClass(FOCUS_CLASS);
+        scope.$apply(function() {ctrl.$focused = true; ctrl.$blur = false;});
+      }).bind('blur', function(evt) {
+        element.removeClass(FOCUS_CLASS);
+        scope.$apply(function() {ctrl.$focused = false; ctrl.$blur = true;});
+      });
+    }
+  }
+}]);

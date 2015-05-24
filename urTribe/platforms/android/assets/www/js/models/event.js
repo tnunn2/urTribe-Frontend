@@ -3,15 +3,14 @@ urtribeModels.factory('Event', function () {
       /**
      * Constructor, with class name
      */
-    function Event(name) {
+    function Event(id, name, datetimeStart, locationName, locationAddress, attendanceStatus) {
       // Public properties, assigned to the instance ('this')
-      this.name = name;
-      /*this.datetime = datetime;
-      this.description = description;
-      this.location = location;
-      this.invited = invited;
-      this.messages = messages;
-      this.attendenceStatus = attendenceStatus;*/
+      this.EventID = id;
+      this.EventName = name;
+      this.DateTimeStart = datetimeStart;
+      this.LocationName = locationName;
+      this.LocationAddress = locationAddress
+      this.AttendanceStatus = attendanceStatus;
     }
 
       /**
@@ -21,17 +20,6 @@ urtribeModels.factory('Event', function () {
       return this.name + ':' + "here is what this event is about";
     };
 
-    /**
-     * Private property
-     */
-    var privacy = "only me";
-
-      /**
-     * Private function
-     */
-    function isPrivate() {
-      return privacy == "only me";
-    }
 
       /**
      * Static method, assigned to class
@@ -39,8 +27,12 @@ urtribeModels.factory('Event', function () {
      */
     Event.build = function (data) {
       return new Event(
-        data.name
-        //Organisation.build(data.organisation) // another model
+        data.EventID,
+        data.EventName,
+        data.DateTimeStart,
+        data.LocationName,
+        data.LocationAddress,
+        data.AttendanceStatus
       );
     };
 
