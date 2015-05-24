@@ -103,12 +103,31 @@ ion-side-menu .item
   color: #33cd5f;
 }
 
+.short-name
+{
+  width: 240px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 /************************************************************
 
                      Dashboard Styles
 
 *************************************************************/
+
+.select-user
+{
+  font-size: 20px;
+  margin-top: 13px;
+}
+
+.dashboard-select-user
+{
+  border-bottom:1px solid;
+  margin-bottom:15px;
+}
 
 .dashboard-availability .toggle-label
 {
@@ -148,6 +167,12 @@ ion-side-menu .item
 .panel
 {
   border-bottom:1px solid #ffffff;
+}
+
+.dash-event-arrow
+{
+  position: relative;
+  top: -6px;
 }
 
 .event-summary

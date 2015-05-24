@@ -8,37 +8,66 @@
             "ID":"8846bdc1-735d-4d82-aa5e-f2b99dc2d467",
             "Name":"Meetup at Everyday is a Sundae",
             "Active":true,
-            "Time":635675942345748788,
-            "Location":"Meetup at Everyday is a Sundae",
-            "Street1":"1002 Summer Place",
+            "Time":"2015-05-24T20:46:17Z",
+            "Location":"Black Dog Gelato",
+            "Street1":"859 N Damen Ave",
             "Street2":null,
-            "City":"Rosemont",
+            "City":"Chicago",
             "State":"IL",
-            "Zip":"61506"
+            "Zip":"60622",
+            "Description":"This is the description"
+          },
+          {
+            "ID":"8846bdc1-735d-4d82-aa5e-f2b99dc2d467",
+            "Name":"More Ice Cream Party",
+            "Active":true,
+            "Time":"2015-05-24T20:46:17Z",
+            "Location":"Black Dog Gelato",
+            "Street1":"859 N Damen Ave",
+            "Street2":null,
+            "City":"Chicago",
+            "State":"IL",
+            "Zip":"60622",
+            "Description":"This is the description"
           },
           {
             "ID":"8846bdc1-735d-4d82-aa5e-lksdkjh8kj",
             "Name":"A Music Show Outing",
             "Active":true,
-            "Time":635675942345748788,
-            "Location":"A Music Venue",
-            "Street1":"200 Music Drive",
+            "Time":"2015-06-02T18:46:17Z",
+            "Location":"Beat Kitchen",
+            "Street1":"2100 W Belmont Ave",
             "Street2":null,
             "City":"Chicago",
             "State":"IL",
-            "Zip":"60634"
+            "Zip":"60618",
+            "Description":"This is the description"
           },
           {
             "ID":"8846bdc1-735d-4d82-aa5e-238728934j",
             "Name":"Movie Night",
             "Active":true,
-            "Time":635675942345748788,
-            "Location":"My house",
-            "Street1":"3150 Byron",
+            "Time":"2015-05-31T12:46:17-06:00",
+            "Location":"Patio Theater",
+            "Street1":"6008 E Irving Park Rd",
             "Street2":null,
             "City":"Chicago",
             "State":"IL",
-            "Zip":"60601"
+            "Zip":"60634",
+            "Description":"This is the description"
+          },
+          {
+            "ID":"8846bdc1-735d-4d82-aa5e-sdhfdhjfdghfgd",
+            "Name":"Party Night",
+            "Active":true,
+            "Time":"2015-05-24T07:46:17Z",
+            "Location":"The Burlington",
+            "Street1":"3425 W Fullerton Ave",
+            "Street2":null,
+            "City":"Chicago",
+            "State":"IL",
+            "Zip":"60647",
+            "Description":"This is the description"
           }
         ]
     }
