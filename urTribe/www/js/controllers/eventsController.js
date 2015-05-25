@@ -1,6 +1,11 @@
 urtribeControllers.controller('EventsController', function($scope, Event, $ionicModal, APIService) {
 
     $scope.Events;
+    $scope.Contacts;
+    $scope.contactsCheckList = {};
+    $scope.contactsSelected = [];
+
+    $scope.eventInfo = {};
 
     $scope.submitted = false;
 
@@ -42,8 +47,10 @@ urtribeControllers.controller('EventsController', function($scope, Event, $ionic
 
 
     $scope.submitEvent = function(event,isCreateEventFormValid){
-
+      console.log(event);
       if (isCreateEventFormValid){
+        //create event
+        //add contacts
 
       } else {
         $scope.submitted = true;
@@ -51,16 +58,14 @@ urtribeControllers.controller('EventsController', function($scope, Event, $ionic
 
     }
 
-    // Triggered in the login modal to close it
     $scope.closeCreateEvent = function($event) {
       $scope.submitted = false;
       $event.preventDefault();
 
       $scope.eventModal.hide();
-      $scope.eventModel.remove();
+      $scope.eventModal.remove();
     };
 
-    // Open the login modal
     $scope.createEvent = function() {
       $ionicModal.fromTemplateUrl('templates/createEvent.html', {
         scope: $scope,
@@ -71,6 +76,23 @@ urtribeControllers.controller('EventsController', function($scope, Event, $ionic
         $scope.eventModal.show();
       });
     };
+
+    $scope.showContacts = false;
+
+    $scope.addContacts = function () {
+      $scope.contactsSelected = [];
+      angular.forEach($scope.contactsCheckList, function(value, key) {
+        if(value)
+        {
+          $scope.contactsSelected.push(key);
+        }
+      });
+    };
+
+    //Get User Contacts
+    APIService.getContacts(function(contacts){
+      $scope.Contacts = contacts;
+    });
 })
 
 urtribeControllers.directive('ngFocus', [function() {

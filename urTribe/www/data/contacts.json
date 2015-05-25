@@ -1,0 +1,31 @@
+{
+  "Status":"success",
+  "Data":{
+    "Contacts":[
+      {
+        "ID":"5a58baf3-f09d-468c-b10e-89673eb63fb3",
+        "Name":"Kimmy Jean",
+        "Status":0,
+        "Token":"5a58baf3-f09d-468c-b10e-89673eb63fb3",
+        "InvitesChannel":null,
+        "Channels":null
+      },
+      {
+        "ID":"5a58baf3-f09d-468c-b10e-sdfsdfsdfsd",
+        "Name":"Tom Parsons",
+        "Status":0,
+        "Token":"5a58baf3-f09d-468c-b10e-sdfsdfsdfsd",
+        "InvitesChannel":null,
+        "Channels":null
+      },
+      {
+        "ID":"5a58baf3-f09d-468c-b10e-sdeb63fb3",
+        "Name":"Jenny Kate",
+        "Status":0,
+        "Token":"5a58baf3-f09d-468c-b10e-sdeb63fb3",
+        "InvitesChannel":null,
+        "Channels":null
+      }
+    ]
+  }
+}

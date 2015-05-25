@@ -111,6 +111,11 @@ ion-side-menu .item
   text-overflow: ellipsis;
 }
 
+.error
+{
+  color:red;
+}
+
 /************************************************************
 
                      Dashboard Styles
@@ -252,6 +257,11 @@ ion-side-menu .item
 .contact-name .ion-record
 {
   color:#33cd5f;
+}
+
+#todayEvents h4
+{
+  margin-left:20px;
 }
 
 /************************************************************

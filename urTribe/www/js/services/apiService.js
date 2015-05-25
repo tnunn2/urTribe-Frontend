@@ -1,4 +1,4 @@
-urtribeServices.factory('APIService', function ($http, Event) {
+urtribeServices.factory('APIService', function ($http, Event, Contact, UserService) {
   var APIService = {};
 
   //Get events overview for events listing
@@ -34,6 +34,18 @@ urtribeServices.factory('APIService', function ($http, Event) {
           }
         });
         callback(eventsList);
+    });
+  }
+
+  APIService.getContacts = function(callback) {
+    //get contacts for user
+    $http.get('/data/contacts.json').success(function(contacts) {
+        //TODO error handling
+        var contactsList = [];
+        angular.forEach(contacts.Data.Contacts, function(value) {
+          contactsList.push(Contact.build(value));
+        });
+        callback(contactsList);
     });
   }
 

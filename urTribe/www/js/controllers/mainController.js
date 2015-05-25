@@ -1,6 +1,6 @@
 var urtribeControllers = angular.module('urtribe.controllers', ['ui.bootstrap', 'urtribe.models','monospaced.elastic', 'urtribe.services'])
 
-urtribeControllers.controller('MainController', function($scope, $ionicModal, $ionicPopup, $timeout, $ionicHistory, MessageService) {
+urtribeControllers.controller('MainController', function($scope, $ionicModal, $ionicPopup, $timeout, $ionicHistory, MessageService, UserService) {
 
   $scope.goBack = function() {
     $ionicHistory.goBack();
@@ -12,9 +12,11 @@ urtribeControllers.controller('MainController', function($scope, $ionicModal, $i
         ];
 
   $scope.userSelected = $scope.Users[0];
+  UserService.setUser($scope.userSelected.name, $scope.userSelected.token);
 
   $scope.setUser = function(user) {
     $scope.userSelected = user;
+    UserService.setUser($scope.userSelected.name, $scope.userSelected.token);
   }
 
   $scope.selectedUser = function(user) {
@@ -22,7 +24,5 @@ urtribeControllers.controller('MainController', function($scope, $ionicModal, $i
   }
 
   MessageService.initialize();
-  //TODO - create API handler singleton here - create class and instantiate
-
 
 })

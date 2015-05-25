@@ -31,6 +31,7 @@
     </div>
     <div class="form-section-header">TODAY'S EVENTS</div>
     <accordion id="todayEvents">
+      <h4 ng-show"Events.length">No Events</h4>
       <accordion-group ng-repeat="event in Events" is-open="event.open">
         <accordion-heading>
             <div class="short-name">{{event.Name}}</div>
