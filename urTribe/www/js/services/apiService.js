@@ -1,6 +1,6 @@
 urtribeServices.factory('APIService', function ($http, Event, Contact, UserService) {
   var APIService = {};
-
+  var endpoint = 'http://ec2-52-24-59-76.us-west-2.compute.amazonaws.com:9058';
   //Get events overview for events listing
 
   APIService.getEvents = function(callback) {
@@ -46,6 +46,28 @@ urtribeServices.factory('APIService', function ($http, Event, Contact, UserServi
           contactsList.push(Contact.build(value));
         });
         callback(contactsList);
+    });
+  }
+
+  APIService.createEvent = function(event, callback) {
+    //get contacts for user
+    $http.post(endpoint + '/api/users/' + UserService.userToken + '/Events', event).
+      success(function(response) {
+        callback(response);
+    }).
+    error(function(response) {
+      callback(response);
+    });
+  }
+
+  APIService.inviteContacts = function(eventID, contacts, callback) {
+    //get contacts for user
+    $http.post(endpoint + '/api/users/' + UserService.userToken + '/Events/' + eventID + '/Contacts', contacts).
+      success(function(response) {
+        callback(response);
+    }).
+    error(function(response) {
+      callback(response);
     });
   }
 

@@ -50,7 +50,44 @@ urtribeControllers.controller('EventsController', function($scope, Event, $ionic
       console.log(event);
       if (isCreateEventFormValid){
         //create event
-        //add contacts
+        var dateParts = event.eventDate.split('-');
+        var timeParts = event.eventStartTime.split(':');
+        var time = new Date(Date.UTC.apply(undefined,dateParts.concat(timeParts))).toISOString();;
+        var eventData = {
+          "ID": null,
+          "Name": event.eventName,
+          "Description": event.Description,
+          "Active": true,
+          "Time": time,
+          "Location": event.eventLocationName,
+          "Street1": event.eventStreetAddress,
+          "Street2": null,
+          "City": event.eventCity,
+          "State": event.eventState,
+          "Zip": event.eventZip
+        };
+        APIService.createEvent(eventData, function(response){
+          //if success then add contacts
+          if(response.Status == "success") {
+            console.log("Event created");
+            var eventID = response.Data.EventId;
+            APIService.inviteContacts(eventID, $scope.contactsSelected, function(response){
+              if(response.Status == "success") {
+                //TODO message user of success
+                console.log("Contacts invited");
+              }
+              else {
+                //TODO handle error
+                console.log("Contacts invited error");
+              }
+            });
+          }
+          else {
+            //TODO handle error
+            console.log("Event created error");
+          }
+        });
+
 
       } else {
         $scope.submitted = true;

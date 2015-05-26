@@ -17,12 +17,13 @@ urtribeControllers.controller('MainController', function($scope, $ionicModal, $i
   $scope.setUser = function(user) {
     $scope.userSelected = user;
     UserService.setUser($scope.userSelected.name, $scope.userSelected.token);
+    MessageService.switchUser("user" + user.token, user.token);
   }
 
   $scope.selectedUser = function(user) {
     return $scope.userSelected === user;
   }
 
-  MessageService.initialize();
+  MessageService.initialize("PhoneTestUser","PhoneTestUserToken");
 
 })
