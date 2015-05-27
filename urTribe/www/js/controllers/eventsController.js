@@ -1,4 +1,4 @@
-urtribeControllers.controller('EventsController', function($scope, Event, $ionicModal, APIService) {
+urtribeControllers.controller('EventsController', function($scope, $filter, Event, $ionicModal, APIService) {
 
     $scope.Events;
     $scope.Contacts;
@@ -50,18 +50,20 @@ urtribeControllers.controller('EventsController', function($scope, Event, $ionic
       console.log(event);
       if (isCreateEventFormValid){
         //create event
-        var dateParts = event.eventDate.split('-');
-        var timeParts = event.eventStartTime.split(':');
-        var time = new Date(Date.UTC.apply(undefined,dateParts.concat(timeParts))).toISOString();;
+        var collectionDate = $filter('date')(event.eventDate, 'yyyy-MM-dd');
+        console.log(collectionDate);
+        var collectionTime = $filter('date')(event.eventStartTime, 'HH:mm:ss');
+        console.log(collectionDate+' '+collectionTime);
+        var time = new Date(collectionDate+' '+collectionTime).toISOString();
         var eventData = {
-          "ID": null,
+          "ID": "",
           "Name": event.eventName,
           "Description": event.Description,
           "Active": true,
           "Time": time,
           "Location": event.eventLocationName,
           "Street1": event.eventStreetAddress,
-          "Street2": null,
+          "Street2": "",
           "City": event.eventCity,
           "State": event.eventState,
           "Zip": event.eventZip

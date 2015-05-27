@@ -1,6 +1,7 @@
 urtribeServices.factory('APIService', function ($http, Event, Contact, UserService) {
   var APIService = {};
-  var endpoint = 'http://ec2-52-24-59-76.us-west-2.compute.amazonaws.com:9058';
+  //var endpoint = 'http://ec2-52-24-59-76.us-west-2.compute.amazonaws.com:9058';
+  var endpoint = '/proxy';
   //Get events overview for events listing
 
   APIService.getEvents = function(callback) {
@@ -39,17 +40,24 @@ urtribeServices.factory('APIService', function ($http, Event, Contact, UserServi
 
   APIService.getContacts = function(callback) {
     //get contacts for user
-    $http.get('/data/contacts.json').success(function(contacts) {
+    $http.get(endpoint + '/api/users/' + UserService.userToken + '/Contacts').success(function(contacts) {
         //TODO error handling
+        console.log("getting contacts")
+        console.log(contacts);
         var contactsList = [];
         angular.forEach(contacts.Data.Contacts, function(value) {
           contactsList.push(Contact.build(value));
         });
         callback(contactsList);
+    }).
+    error(function(response) {
+      console.log(response);
+      callback(response);
     });
   }
 
   APIService.createEvent = function(event, callback) {
+    console.log("creating event");
     //get contacts for user
     $http.post(endpoint + '/api/users/' + UserService.userToken + '/Events', event).
       success(function(response) {
