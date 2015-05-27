@@ -8,8 +8,10 @@ urtribeServices.factory('MessageService', function ($ionicPopup, $rootScope) {
 
   var MessageService = {};
 
-  MessageService.initialize = function() {
+  MessageService.initialize = function(userTable, token) {
     //connect to realtime framework
+    authenticationToken = token;
+    userTableName = userTable;
     MessageService.connectRealTime(function(response){
       if(response.error)
       {
@@ -23,6 +25,16 @@ urtribeServices.factory('MessageService', function ($ionicPopup, $rootScope) {
 
         });
       }
+    });
+  }
+
+  MessageService.switchUser = function(userTable, token) {
+    var tableRef = storageRef.table(userTableName, function (error){
+      callback(JSON.stringify({"error": error}));
+    });
+
+    tableRef.off("update", function(itemSnapshot) {
+      MessageService.initialize(userTable,token);
     });
   }
 

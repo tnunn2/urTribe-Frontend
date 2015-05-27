@@ -1,4 +1,4 @@
-<ion-view view-title="Events">
+<ion-view cache-view="false" view-title="Events">
   <ion-content>
     <div class="row">
       <div class="col col-50">
@@ -18,17 +18,17 @@
         <button class="button button-block icon-left ion-plus-circled button-dark" ng-click="createEvent()">Create</button>
       </div>
     </div>
-    <div ng-repeat="event in Events" class="event-overview" id="{{event.EventID}}">
+    <div ng-repeat="event in Events" class="event-overview" id="{{event.ID}}">
       <div class="row">
         <div class="col-90">
           <div class="title">
-            <a href="#/app/event:{{event.EventID}}">{{event.EventName}}</a>
+            <a href="#/app/event:{{event.EventID}}">{{event.Name}}</a>
           </div>
           <div class="time">
-            <span class="ion-clock"></span> {{ event.DateTimeStart | date : "MMMM d 'at' h:mm a"}}
+            <span class="ion-clock"></span> {{ event.Time | date : "MMMM d 'at' h:mm a"}}
           </div>
           <div class="location">
-            <span class="ion-location"></span> {{event.LocationName}}
+            <span class="ion-location"></span> <a href="{{event.getMapURL()}}">{{event.Location}}</a>
           </div>
         </div>
         <div class="col-10 attendance">
@@ -56,6 +56,6 @@
           </div>
         </div>
       </div>
-    </div>    
+    </div>
   </ion-content>
 </ion-view>

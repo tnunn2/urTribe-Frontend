@@ -1,12 +1,12 @@
 urtribeServices.factory('APIService', function ($http, Event, Contact, UserService) {
   var APIService = {};
-  //var endpoint = 'http://ec2-52-24-59-76.us-west-2.compute.amazonaws.com:9058';
-  var endpoint = '/proxy';
+  var endpoint = 'http://ec2-52-24-59-76.us-west-2.compute.amazonaws.com:9058';
+  //var endpoint = '/proxy';
   //Get events overview for events listing
 
   APIService.getEvents = function(callback) {
     //get events for user
-    $http.get('/data/events.json').success(function(events) {
+    $http.get(endpoint + '/api/users/'+ UserService.userToken + '/Events').success(function(events) {
         //TODO error handling
         var eventsList = [];
         angular.forEach(events.Data.EventList, function(value) {
@@ -18,7 +18,7 @@ urtribeServices.factory('APIService', function ($http, Event, Contact, UserServi
 
   APIService.getTodaysEvents = function(callback) {
     //get events for todayEvents
-    $http.get('/data/events.json').success(function(events) {
+    $http.get(endpoint + '/api/users/'+ UserService.userToken + '/Events').success(function(events) {
         //TODO error handling
         var eventsList = [];
         angular.forEach(events.Data.EventList, function(value) {

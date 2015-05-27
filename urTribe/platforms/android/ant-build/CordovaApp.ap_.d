@@ -45,6 +45,7 @@
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/css/ionic.app.css \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/css/ionic.app.min.css \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/css/style.css \
+/Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/data/contacts.json \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/data/events.json \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/fonts/glyphicons-halflings-regular.eot \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/fonts/glyphicons-halflings-regular.svg \
@@ -69,9 +70,11 @@
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/js/controllers/mainController.js \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/js/controllers/profileController.js \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/js/controllers/settingsController.js \
+/Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/js/models/contact.js \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/js/models/event.js \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/js/services/apiService.js \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/js/services/messageService.js \
+/Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/js/services/userService.js \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/js/tests/messageServiceTests.js \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/lib/angular \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/lib/angular-animate \

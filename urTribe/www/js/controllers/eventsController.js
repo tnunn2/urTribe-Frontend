@@ -1,4 +1,4 @@
-urtribeControllers.controller('EventsController', function($scope, $filter, Event, $ionicModal, APIService) {
+urtribeControllers.controller('EventsController', function($scope, $state, $window,$ionicPopup, $filter, Event, $ionicModal, APIService) {
 
     $scope.Events;
     $scope.Contacts;
@@ -47,14 +47,11 @@ urtribeControllers.controller('EventsController', function($scope, $filter, Even
 
 
     $scope.submitEvent = function(event,isCreateEventFormValid){
-      console.log(event);
       if (isCreateEventFormValid){
-        //create event
         var collectionDate = $filter('date')(event.eventDate, 'yyyy-MM-dd');
-        console.log(collectionDate);
         var collectionTime = $filter('date')(event.eventStartTime, 'HH:mm:ss');
-        console.log(collectionDate+' '+collectionTime);
-        var time = new Date(collectionDate+' '+collectionTime).toISOString();
+        var timeString = collectionDate+' '+collectionTime;
+        var time = new Date(timeString.replace(/-/g, "/")).toISOString();
         var eventData = {
           "ID": "",
           "Name": event.eventName,
@@ -68,6 +65,7 @@ urtribeControllers.controller('EventsController', function($scope, $filter, Even
           "State": event.eventState,
           "Zip": event.eventZip
         };
+
         APIService.createEvent(eventData, function(response){
           //if success then add contacts
           if(response.Status == "success") {
@@ -76,16 +74,19 @@ urtribeControllers.controller('EventsController', function($scope, $filter, Even
             APIService.inviteContacts(eventID, $scope.contactsSelected, function(response){
               if(response.Status == "success") {
                 //TODO message user of success
+                $scope.showPopup();
                 console.log("Contacts invited");
               }
               else {
                 //TODO handle error
+                $scope.showPopup();
                 console.log("Contacts invited error");
               }
             });
           }
           else {
             //TODO handle error
+            $scope.showPopup();
             console.log("Event created error");
           }
         });
@@ -103,6 +104,7 @@ urtribeControllers.controller('EventsController', function($scope, $filter, Even
 
       $scope.eventModal.hide();
       $scope.eventModal.remove();
+      $state.go($state.current, {}, {reload: true});
     };
 
     $scope.createEvent = function() {
@@ -132,6 +134,16 @@ urtribeControllers.controller('EventsController', function($scope, $filter, Even
     APIService.getContacts(function(contacts){
       $scope.Contacts = contacts;
     });
+
+    $scope.showPopup = function() {
+      var alertPopup = $ionicPopup.alert({
+        title: 'Event Created',
+        template: 'Your event was created'
+      });
+      alertPopup.then(function(res) {
+
+      });
+    };
 })
 
 urtribeControllers.directive('ngFocus', [function() {

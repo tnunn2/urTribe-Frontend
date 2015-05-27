@@ -1,6 +1,7 @@
-<form name="createEvent_form" novalidate ng-submit="submitEvent(eventInfo,createEvent_form.$valid)" >
+
 <ion-modal-view>
-    <ion-header-bar class="bar-positive">
+  <form name="createEvent_form" novalidate ng-submit="submitEvent(eventInfo,createEvent_form.$valid)" >
+    <ion-header-bar class="bar-positive" ng-style="{'visibility': !showContacts ?'visible':'hidden'}">
       <div class="buttons">
         <button class="button button-clear" ng-click="closeCreateEvent($event)">Close</button>
       </div>
@@ -14,7 +15,7 @@
         <label class="item item-input">
           <input type="text" ng-class="{error: createEvent_form.eventName.$dirty && createEvent_form.eventName.$invalid}"
                  placeholder="Event Name" name="eventName"
-                 ng-model="eventInfo.EventName"
+                 ng-model="eventInfo.eventName"
                  ng-minlength=3
                  required
                  ng-focus>
@@ -83,9 +84,9 @@
           <div class="input-label">
             State
           </div>
-          <select>
-            <option selected>Illinois</option>
-            <option selected>Another State</option>
+          <select ng-model="eventInfo.eventState">
+            <option selected>IL</option>
+            <option selected>MO</option>
           </select>
         </label>
         <label class="item item-input">
@@ -127,26 +128,45 @@
         <div class="error-container" ng-show="createEvent_form.eventStartTime.$dirty && createEvent_form.eventStartTime.$invalid && !createEvent_form.eventStartTime.$focused")>
           <small class="error" ng-show="createEvent_form.eventStartTime.$error.required">Please enter start time</small>
         </div>
-        <label class="item item-input item-stacked-label">
-          <span class="input-label">End Time</span>
-          <input type="time" name="eventEndTime"
-                 ng-model="eventInfo.eventEndTime"
-                 required
-                 ng-focus/>
-        </label>
-        <small class="error" ng-show="(submitted || createEvent_form.eventEndTime.$blur) && createEvent_form.eventEndTime.$pristine">Please enter end time</small>
-        <div class="error-container" ng-show="createEvent_form.eventEndTime.$dirty && createEvent_form.eventEndTime.$invalid && !createEvent_form.eventEndTime.$focused")>
-          <small class="error" ng-show="createEvent_form.eventEndTime.$error.required">Please enter end time</small>
-        </div>
       </div>
       <div class="row" id="invitePeople">
         <div class="col">
           People Invited
         </div>
-        <div class="col">
+        <div class="col" ng-click="$parent.showContacts = !$parent.showContacts">
           <span id="contactsAdded">Add contacts</span> &nbsp;&nbsp;<span class="ion-chevron-right"></span>
         </div>
       </div>
     </ion-content>
-  </ion-modal-view>
-</form>
+    <ion-pane ng-show="showContacts">
+      <ion-header-bar class="bar-positive">
+        <div class="buttons">
+          <button type="button" class="button button-clear" ng-click="showContacts = !showContacts">Close</button>
+        </div>
+        <h1 class="title">Select Contacts</h1>
+        <div class="buttons">
+          <button type="button" class="button button-clear" ng-click="showContacts = !showContacts; $parent.addContacts();">Done</button>
+        </div>
+      </ion-header-bar>
+      <ion-content>
+        <ul id="selectContacts">
+          <li class="item item-checkbox checkbox-calm" ng-repeat="contact in Contacts">
+            <label class="checkbox">
+              <input type="checkbox" ng-model="contactsCheckList[contact.ID]">
+              <div class="contact-select">
+                <div class="contact-thumb">
+                </div>
+                <div class="contact-info">
+                  <div class="contact-name">
+                    {{contact.Name}} &nbsp;<span class="ion-record" ng-show="false"></span>
+                  </div>
+                  <div class="contact-distance" ng-show="false">1mi away</div>
+                </div>
+              </div>
+            </label>
+          </li>
+        </ul>
+      </ion-content>
+  </ion-pane>
+  </form>
+</ion-modal-view>

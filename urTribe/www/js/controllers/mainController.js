@@ -7,8 +7,8 @@ urtribeControllers.controller('MainController', function($scope, $ionicModal, $i
   };
 
   $scope.Users = [
-        {name: 'Jimmy James', token:"5c915964-7362-45a2-9ed5-870078ff8b6f"},
-        {name: 'Ashly Thomas', token:"b5fc7680-25ae-4d62-9202-753b40e8dbbc"}
+        {name: 'Alice Kate', token:"601cffd0-1424-4362-8387-3e409b22bae2"},
+        {name: 'Ryan Thomas', token:"4a7f2f93-7cc5-4fb7-91ed-cdafc372eab8"}
         ];
 
   $scope.userSelected = $scope.Users[0];
@@ -24,6 +24,6 @@ urtribeControllers.controller('MainController', function($scope, $ionicModal, $i
     return $scope.userSelected === user;
   }
 
-  MessageService.initialize("PhoneTestUser","PhoneTestUserToken");
+  MessageService.initialize('user' + $scope.userSelected.token,$scope.userSelected.token);
 
 })

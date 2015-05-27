@@ -1,6 +1,24 @@
 <ion-view view-title="Dashboard">
   <ion-content>
-    <div class="row dashboard-availability">
+    <div class="row dashboard-select-user">
+      <div class="col col-50 select-user">
+        Select User:
+      </div>
+      <div class="col col-50">
+        <div class="btn-group block-dropdown" dropdown>
+          <button type="button" class="btn btn-default btn-block dropdown-toggle" dropdown-toggle>
+            {{userSelected.name}}
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li ng-repeat="user in Users">
+              <a ng-click="setUser(user)">{{user.name}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row dashboard-availability" style="display:none">
       <div class="col toggle-label">Availabile</div>
       <div class="col toggle-btn">
         <label class="toggle toggle-balanced">
@@ -13,35 +31,18 @@
     </div>
     <div class="form-section-header">TODAY'S EVENTS</div>
     <accordion id="todayEvents">
-      <accordion-group is-open="event1.open">
+      <h4 ng-show"Events.length">No Events</h4>
+      <accordion-group ng-repeat="event in Events" is-open="event.open">
         <accordion-heading>
-            Event 1 Title - 6:00 PM <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': event1.open, 'glyphicon-chevron-right': !event1.open}"></i>
+            <div class="short-name">{{event.Name}}</div>
+            {{ event.Time | date : "h:mm a"}} <div class="pull-right glyphicon dash-event-arrow" ng-class="{'glyphicon-chevron-down': event.open, 'glyphicon-chevron-right': !event.open}"></div>
         </accordion-heading>
         <div class="event-summary">
           <div class="event-title">
-            Jim's Bar
+            {{event.Location}}
           </div>
           <div class="event-location">
-            <a href="#">123 Main Street, Chicago, IL</a>
-          </div>
-          <div class="event-cta">
-            <div class="button-bar">
-              <a class="button button-small">12 Attending</a>
-              <a class="button button-small button-cta">More</a>
-            </div>
-          </div>
-        </div>
-      </accordion-group>
-      <accordion-group is-open="event2.open">
-        <accordion-heading>
-            Event 2 Title - 8:00 PM<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': event2.open, 'glyphicon-chevron-right': !event2.open}"></i>
-        </accordion-heading>
-        <div class="event-summary">
-          <div class="event-title">
-            Jim's Bar
-          </div>
-          <div class="event-location">
-            <a href="#">123 Main Street, Chicago, IL</a>
+            <a href="{{event.getMapURL()}}">{{event.Street1}} <span ng-if="event.Street2 !=null">{{event.Street2}}</span>, {{event.City}}, {{event.State}}</a>
           </div>
           <div class="event-cta">
             <div class="button-bar">
@@ -52,7 +53,7 @@
         </div>
       </accordion-group>
     </accordion>
-    <div class="form-section-header header-top-space row" id="aroundHeader">
+    <div class="form-section-header header-top-space row" id="aroundHeader" style="display:none">
       <div class="col col-50">
         WHO'S AROUND
       </div>
@@ -62,7 +63,7 @@
         </button>
       </div>
     </div>
-    <ul id="whosAround">
+    <ul id="whosAround" style="display:none">
       <li class="item item-checkbox checkbox-calm">
         <label class="checkbox">
           <input type="checkbox">
@@ -107,7 +108,6 @@
             </div>
           </div>
         </label>
-
       </li>
     </ul>
   </ion-content>

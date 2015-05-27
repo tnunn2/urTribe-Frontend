@@ -1,28 +1,29 @@
 var urtribeControllers = angular.module('urtribe.controllers', ['ui.bootstrap', 'urtribe.models','monospaced.elastic', 'urtribe.services'])
 
-urtribeControllers.controller('MainController', function($scope, $ionicModal, $ionicPopup, $timeout, $ionicHistory, MessageService) {
+urtribeControllers.controller('MainController', function($scope, $ionicModal, $ionicPopup, $timeout, $ionicHistory, MessageService, UserService) {
 
   $scope.goBack = function() {
     $ionicHistory.goBack();
   };
 
   $scope.Users = [
-        {name: 'Jimmy James', token:"1b37a029-7784-4417-9eac-144fe5088439"},
-        {name: 'Ashly Thomas', token:"3cc37867-2a0d-43df-b03d-ddc03dc869dc"}
+        {name: 'Alice Kate', token:"601cffd0-1424-4362-8387-3e409b22bae2"},
+        {name: 'Ryan Thomas', token:"4a7f2f93-7cc5-4fb7-91ed-cdafc372eab8"}
         ];
 
   $scope.userSelected = $scope.Users[0];
+  UserService.setUser($scope.userSelected.name, $scope.userSelected.token);
 
   $scope.setUser = function(user) {
     $scope.userSelected = user;
+    UserService.setUser($scope.userSelected.name, $scope.userSelected.token);
+    MessageService.switchUser("user" + user.token, user.token);
   }
 
   $scope.selectedUser = function(user) {
     return $scope.userSelected === user;
   }
 
-  MessageService.initialize();
-  //TODO - create API handler singleton here - create class and instantiate
-
+  MessageService.initialize('user' + $scope.userSelected.token,$scope.userSelected.token);
 
 })

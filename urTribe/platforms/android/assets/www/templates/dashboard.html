@@ -1,4 +1,4 @@
-<ion-view view-title="Dashboard">
+<ion-view cache-view="false" view-title="Dashboard">
   <ion-content>
     <div class="row dashboard-select-user">
       <div class="col col-50 select-user">
@@ -18,7 +18,7 @@
         </div>
       </div>
     </div>
-    <div class="row dashboard-availability">
+    <div class="row dashboard-availability" style="display:none">
       <div class="col toggle-label">Availabile</div>
       <div class="col toggle-btn">
         <label class="toggle toggle-balanced">
@@ -31,6 +31,7 @@
     </div>
     <div class="form-section-header">TODAY'S EVENTS</div>
     <accordion id="todayEvents">
+      <h4 ng-show"Events.length">No Events</h4>
       <accordion-group ng-repeat="event in Events" is-open="event.open">
         <accordion-heading>
             <div class="short-name">{{event.Name}}</div>
@@ -52,7 +53,7 @@
         </div>
       </accordion-group>
     </accordion>
-    <div class="form-section-header header-top-space row" id="aroundHeader">
+    <div class="form-section-header header-top-space row" id="aroundHeader" style="display:none">
       <div class="col col-50">
         WHO'S AROUND
       </div>
@@ -62,7 +63,7 @@
         </button>
       </div>
     </div>
-    <ul id="whosAround">
+    <ul id="whosAround" style="display:none">
       <li class="item item-checkbox checkbox-calm">
         <label class="checkbox">
           <input type="checkbox">

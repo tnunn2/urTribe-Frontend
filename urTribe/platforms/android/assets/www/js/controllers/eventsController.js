@@ -1,6 +1,11 @@
-urtribeControllers.controller('EventsController', function($scope, Event, $ionicModal, APIService) {
+urtribeControllers.controller('EventsController', function($scope, $window,$filter, Event, $ionicModal, APIService) {
 
     $scope.Events;
+    $scope.Contacts;
+    $scope.contactsCheckList = {};
+    $scope.contactsSelected = [];
+
+    $scope.eventInfo = {};
 
     $scope.submitted = false;
 
@@ -42,8 +47,51 @@ urtribeControllers.controller('EventsController', function($scope, Event, $ionic
 
 
     $scope.submitEvent = function(event,isCreateEventFormValid){
-
+      console.log(event);
       if (isCreateEventFormValid){
+        //create event
+        var collectionDate = $filter('date')(event.eventDate, 'yyyy-MM-dd');
+        console.log(collectionDate);
+        var collectionTime = $filter('date')(event.eventStartTime, 'HH:mm:ss');
+        console.log(collectionDate+' '+collectionTime);
+        var time = new Date(collectionDate+' '+collectionTime).toISOString();
+        var eventData = {
+          "ID": "",
+          "Name": event.eventName,
+          "Description": event.Description,
+          "Active": true,
+          "Time": time,
+          "Location": event.eventLocationName,
+          "Street1": event.eventStreetAddress,
+          "Street2": "",
+          "City": event.eventCity,
+          "State": event.eventState,
+          "Zip": event.eventZip
+        };
+        APIService.createEvent(eventData, function(response){
+          //if success then add contacts
+          if(response.Status == "success") {
+            alert("Event Created");
+            console.log("Event created");
+            var eventID = response.Data.EventId;
+            APIService.inviteContacts(eventID, $scope.contactsSelected, function(response){
+              if(response.Status == "success") {
+                //TODO message user of success
+                console.log("Contacts invited");
+              }
+              else {
+                //TODO handle error
+                console.log("Contacts invited error");
+              }
+            });
+          }
+          else {
+            //TODO handle error
+            alert("event error");
+            console.log("Event created error");
+          }
+        });
+
 
       } else {
         $scope.submitted = true;
@@ -51,16 +99,15 @@ urtribeControllers.controller('EventsController', function($scope, Event, $ionic
 
     }
 
-    // Triggered in the login modal to close it
     $scope.closeCreateEvent = function($event) {
       $scope.submitted = false;
       $event.preventDefault();
 
       $scope.eventModal.hide();
-      $scope.eventModel.remove();
+      $scope.eventModal.remove();
+      $window.location.reload(true);
     };
 
-    // Open the login modal
     $scope.createEvent = function() {
       $ionicModal.fromTemplateUrl('templates/createEvent.html', {
         scope: $scope,
@@ -71,6 +118,23 @@ urtribeControllers.controller('EventsController', function($scope, Event, $ionic
         $scope.eventModal.show();
       });
     };
+
+    $scope.showContacts = false;
+
+    $scope.addContacts = function () {
+      $scope.contactsSelected = [];
+      angular.forEach($scope.contactsCheckList, function(value, key) {
+        if(value)
+        {
+          $scope.contactsSelected.push(key);
+        }
+      });
+    };
+
+    //Get User Contacts
+    APIService.getContacts(function(contacts){
+      $scope.Contacts = contacts;
+    });
 })
 
 urtribeControllers.directive('ngFocus', [function() {
