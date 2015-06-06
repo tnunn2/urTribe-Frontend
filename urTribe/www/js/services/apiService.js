@@ -1,7 +1,7 @@
-urtribeServices.factory('APIService', function ($http, Event, Contact, UserService) {
+urtribeServices.factory('APIService', function ($http, Event, Contact, UserService, $q) {
   var APIService = {};
-  var endpoint = 'http://ec2-52-24-59-76.us-west-2.compute.amazonaws.com:9058';
-  //var endpoint = '/proxy';
+  //var endpoint = 'http://ec2-52-24-59-76.us-west-2.compute.amazonaws.com:9058';
+  var endpoint = '/proxy';
   //Get events overview for events listing
 
   APIService.getEvents = function(callback) {
@@ -12,7 +12,27 @@ urtribeServices.factory('APIService', function ($http, Event, Contact, UserServi
         angular.forEach(events.Data.EventList, function(value) {
           eventsList.push(Event.build(value));
         });
-        callback(eventsList);
+
+
+        var prom = []
+        angular.forEach(eventsList, function(value){
+          prom.push(APIService.getAttendanceStatus(value.ID, function(response){
+            if(response.Status == "success") {
+              value.setAttendanceStatus(response.Data.Status);
+              console.log("Status get success");
+            }
+            else {
+              //TODO handle error
+              console.log(response);
+              console.log("Get status error");
+            }
+          }));
+        });
+
+        $q.all(prom).then(function(data){
+	         callback(eventsList);
+         });
+
     });
   }
 
@@ -71,6 +91,17 @@ urtribeServices.factory('APIService', function ($http, Event, Contact, UserServi
   APIService.inviteContacts = function(eventID, contacts, callback) {
     //get contacts for user
     $http.post(endpoint + '/api/users/' + UserService.userToken + '/Events/' + eventID + '/Contacts', contacts).
+      success(function(response) {
+        callback(response);
+    }).
+    error(function(response) {
+      callback(response);
+    });
+  }
+
+  APIService.getAttendanceStatus = function(eventID, callback)
+  {
+    $http.get(endpoint + '/api/events/' + eventID + '/Users/' + UserService.userToken + "/Status/").
       success(function(response) {
         callback(response);
     }).

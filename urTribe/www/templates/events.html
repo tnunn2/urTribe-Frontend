@@ -32,10 +32,10 @@
           </div>
         </div>
         <div class="col-10 attendance">
-          <span ng-if="event.AttendanceStatus == 'Attending'" class="ion-android-checkbox confirmed"></span>
+          <span ng-if="event.AttendanceStatus == 'Going'" class="ion-android-checkbox confirmed"></span>
         </div>
       </div>
-      <div class="row" ng-if="event.AttendanceStatus == 'Attending' || event.AttendanceStatus == 'Maybe'">
+      <div class="row" ng-if="event.AttendanceStatus == 'Going' || event.AttendanceStatus == 'Maybe'">
         <div class="col">
           <div class="event-cta">
             <div class="button-bar">

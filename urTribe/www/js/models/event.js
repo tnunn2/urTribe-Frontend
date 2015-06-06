@@ -1,8 +1,9 @@
 var urtribeModels = angular.module('urtribe.models', [])
 urtribeModels.factory('Event', function () {
-      /**
-     * Constructor, with class name
-     */
+
+    /**
+   * Constructor, with class name
+   */
     function Event(id, name, active, time, location, street1, street2, city, state, zip, description) {
       // Public properties, assigned to the instance ('this')
       this.ID = id,
@@ -16,7 +17,7 @@ urtribeModels.factory('Event', function () {
       this.State = state,
       this.Zip = zip,
       this.description = description,
-      this.AttendanceStatus = "Attending";
+      this.AttendanceStatus = null;
     }
 
       /**
@@ -34,17 +35,18 @@ urtribeModels.factory('Event', function () {
       else {
         return "http://maps.google.com/?q=" + this.Street1  + "," + this.City  + "," + this.State + "," + this.Zip;
       }
-
     }
 
+    Event.prototype.setAttendanceStatus = function (status) {
+      this.AttendanceStatus = status;
+    }
 
-      /**
+    /**
      * Static method, assigned to class
      * Instance ('this') is not available in static context
      */
     Event.build = function (data) {
-      //format Time
-
+      //create event
       return new Event(
         data.ID,
         data.Name,
@@ -58,9 +60,6 @@ urtribeModels.factory('Event', function () {
         data.Zip,
         data.Description
       );
-
-      //get attendance Status
-
       //get people attending
     };
 

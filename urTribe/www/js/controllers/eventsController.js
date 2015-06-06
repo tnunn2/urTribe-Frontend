@@ -74,11 +74,13 @@ urtribeControllers.controller('EventsController', function($scope, $state, $wind
             APIService.inviteContacts(eventID, $scope.contactsSelected, function(response){
               if(response.Status == "success") {
                 //TODO message user of success
+                console.log(response);
                 $scope.showPopup();
                 console.log("Contacts invited");
               }
               else {
                 //TODO handle error
+                console.log(response);
                 $scope.showPopup();
                 console.log("Contacts invited error");
               }
@@ -86,6 +88,7 @@ urtribeControllers.controller('EventsController', function($scope, $state, $wind
           }
           else {
             //TODO handle error
+            console.log(response);
             $scope.showPopup();
             console.log("Event created error");
           }
