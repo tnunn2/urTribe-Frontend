@@ -32,7 +32,7 @@
     <div class="form-section-header">TODAY'S EVENTS</div>
     <accordion id="todayEvents">
       <h4 ng-show"Events.length">No Events</h4>
-      <accordion-group ng-repeat="event in Events" is-open="event.open">
+      <accordion-group ng-repeat="event in Events" is-open="event.open" ng-if="event.AttendanceStatus != 'Declined'">
         <accordion-heading>
             <div class="short-name">{{event.Name}}</div>
             {{ event.Time | date : "h:mm a"}} <div class="pull-right glyphicon dash-event-arrow" ng-class="{'glyphicon-chevron-down': event.open, 'glyphicon-chevron-right': !event.open}"></div>

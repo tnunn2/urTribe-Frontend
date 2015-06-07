@@ -9,32 +9,32 @@ urtribeServices.factory('APIService', function ($http, Event, Contact, UserServi
     $http.get(endpoint + '/api/users/'+ UserService.userToken + '/Events').success(function(events) {
         //TODO error handling
         var eventsList = [];
+
         angular.forEach(events.Data.EventList, function(value) {
           eventsList.push(Event.build(value));
         });
-
-
-        var prom = []
-        angular.forEach(eventsList, function(value){
-          prom.push(APIService.getAttendanceStatus(value.ID, function(response){
-            if(response.Status == "success") {
-              value.setAttendanceStatus(response.Data.Status);
-              console.log("Status get success");
-            }
-            else {
-              //TODO handle error
-              console.log(response);
-              console.log("Get status error");
-            }
-          }));
-        });
-
-        $q.all(prom).then(function(data){
-	         callback(eventsList);
-         });
-
+        setStatus(eventsList,callback);
     });
   }
+
+  function setStatus(eventsList, callback){
+    var reducedEventsList = [];
+    var prom = []
+    angular.forEach(eventsList, function(value){
+      prom.push(APIService.getAttendanceStatus(value));
+    });
+
+    $q.all(prom).then(function(data){
+       angular.forEach(eventsList, function(value){
+         if(value.AttendanceStatus != "Declined")
+         {
+           reducedEventsList.push(value);
+         }
+       });
+       
+       callback(reducedEventsList);
+     });
+  };
 
   APIService.getTodaysEvents = function(callback) {
     //get events for todayEvents
@@ -54,7 +54,7 @@ urtribeServices.factory('APIService', function ($http, Event, Contact, UserServi
             }
           }
         });
-        callback(eventsList);
+        setStatus(eventsList,callback);
     });
   }
 
@@ -62,8 +62,6 @@ urtribeServices.factory('APIService', function ($http, Event, Contact, UserServi
     //get contacts for user
     $http.get(endpoint + '/api/users/' + UserService.userToken + '/Contacts').success(function(contacts) {
         //TODO error handling
-        console.log("getting contacts")
-        console.log(contacts);
         var contactsList = [];
         angular.forEach(contacts.Data.Contacts, function(value) {
           contactsList.push(Contact.build(value));
@@ -99,15 +97,27 @@ urtribeServices.factory('APIService', function ($http, Event, Contact, UserServi
     });
   }
 
-  APIService.getAttendanceStatus = function(eventID, callback)
+  APIService.getAttendanceStatus = function(event)
   {
-    $http.get(endpoint + '/api/events/' + eventID + '/Users/' + UserService.userToken + "/Status/").
+    var defer = $q.defer();
+    $http.get(endpoint + '/api/events/' + event.ID + '/Users/' + UserService.userToken + "/Status/").
       success(function(response) {
-        callback(response);
+        if(response.Status == "success") {
+          event.setAttendanceStatus(response.Data.Status);
+          defer.resolve(response);
+        }
+        else {
+          //TODO handle error
+          console.log(response);
+          console.log("Get status error");
+          defer.reject(response);
+        }
+
     }).
     error(function(response) {
-      callback(response);
+        defer.reject(response);
     });
+    return defer.promise;
   }
 
   APIService.setAttendanceStatus = function (status, eventID, callback)

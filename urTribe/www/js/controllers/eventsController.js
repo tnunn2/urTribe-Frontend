@@ -42,6 +42,10 @@ urtribeControllers.controller('EventsController', function($scope, $state, $wind
 
     //Get User Events
     APIService.getEvents(function(events){
+      events.sort(function(a, b) {
+        return new Date(a.Time) - new Date(b.Time)
+      });
+      console.log(events);
       $scope.Events = events;
     });
 
@@ -52,6 +56,7 @@ urtribeControllers.controller('EventsController', function($scope, $state, $wind
         var collectionTime = $filter('date')(event.eventStartTime, 'HH:mm:ss');
         var timeString = collectionDate+' '+collectionTime;
         var time = new Date(timeString.replace(/-/g, "/")).toISOString();
+        console.log(time);
         var eventData = {
           "ID": "",
           "Name": event.eventName,

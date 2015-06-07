@@ -18,14 +18,14 @@
         <button class="button button-block icon-left ion-plus-circled button-dark" ng-click="createEvent()">Create</button>
       </div>
     </div>
-    <div ng-repeat="event in Events" class="event-overview" id="{{event.ID}}">
+    <div ng-repeat="event in Events | orderBy:'event.date':true" class="event-overview" id="{{event.ID}}" ng-if="event.AttendanceStatus != 'Declined'">
       <div class="row">
         <div class="col-90">
           <div class="title">
             <a href="#/app/event:{{event.EventID}}">{{event.Name}}</a>
           </div>
           <div class="time">
-            <span class="ion-clock"></span> {{ event.Time | date : "MMMM d 'at' h:mm a"}}
+            <span class="ion-clock"></span> {{ event.Time }}
           </div>
           <div class="location">
             <span class="ion-location"></span> <a href="{{event.getMapURL()}}">{{event.Location}}</a>
@@ -49,9 +49,9 @@
         <div class="col">
           <div class="event-cta">
             <div class="button-bar">
-              <a class="button button-small" ng-click="updateStatus('Going', event)">Going</a>
-              <a class="button button-small" ng-click="updateStatus('Maybe', event)">Maybe</a>
-              <a class="button button-small" ng-click="updateStatus('Decline', event)">Decline</a>
+              <a class="button button-small" ng-click="event.AttendanceStatus = 'Going'; updateStatus('Going', event)">Going</a>
+              <a class="button button-small" ng-click="event.AttendanceStatus = 'Maybe'; updateStatus('Maybe', event)">Maybe</a>
+              <a class="button button-small" ng-click="event.AttendanceStatus = 'Declined'; updateStatus('Declined', event)">Decline</a>
             </div>
           </div>
         </div>

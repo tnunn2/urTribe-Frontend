@@ -47,11 +47,12 @@ urtribeModels.factory('Event', function () {
      */
     Event.build = function (data) {
       //create event
+      var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
       return new Event(
         data.ID,
         data.Name,
         data.Active,
-        data.Time,
+        new Date(data.Time).toLocaleString('en-US', options),
         data.Location,
         data.Street1,
         data.Street2,
