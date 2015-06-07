@@ -1,90 +1,13 @@
-<ion-view view-title="Event Name">
-  <div class="bar bar-subheader" id="event-content-subhead">
-    <div class="button-bar event-view-options">
-      <a class="button button-small">Invite</a>
-      <a class="button button-small">Details</a>
-      <a class="button button-small attendance-status">Going <span class="ion-android-checkbox confirmed"></span></a>
-    </div>
-  </div>
-  <ion-content class="event-container has-subheader" has-subheader="true">
-    <div id="eventMessages">
-      <div class="message-container">
-        <div class="chat-bubble left">
-          <div class="message">
-            This is a message about the event.  The time might change.
-          </div>
-          <div class="message-detail">
-              <span class="bold">User Name</span>,
-              <span> 10:02 AM</span>
-          </div>
-        </div>
+<ion-view view-title="Details">
+  <ion-content>
+    <div id="event-content-subhead">
+      <div class="eventTitle">
+        {{Event.Name}}
       </div>
-      <div class="message-container">
-        <div class="chat-bubble right">
-          <div class="message">
-            This is another message.  I think we should change the time.
-          </div>
-          <div class="message-detail">
-              <span class="bold">User Name</span>,
-              <span> 10:02 AM</span>
-          </div>
-        </div>
-      </div>
-      <div class="message-container" >
-        <div class="chat-bubble left">
-          <div class="message">
-            This is a message about the event.  The time might change.
-          </div>
-          <div class="message-detail">
-              <span class="bold">User Name</span>,
-              <span> 10:02 AM</span>
-          </div>
-        </div>
-      </div>
-      <div class="message-container">
-        <div class="chat-bubble right">
-          <div class="message">
-            This is another message.  I think we should change the time.
-          </div>
-          <div class="message-detail">
-              <span class="bold">User Name</span>,
-              <span> 10:02 AM</span>
-          </div>
-        </div>
-      </div>
-      <div class="message-container">
-        <div class="chat-bubble left">
-          <div class="message">
-            This is a message about the event.  The time might change.
-          </div>
-          <div class="message-detail">
-              <span class="bold">User Name</span>,
-              <span> 10:02 AM</span>
-          </div>
-        </div>
-      </div>
-      <div class="message-container">
-        <div class="chat-bubble right">
-          <div class="message">
-            This is another message.  I think we should change the time.
-          </div>
-          <div class="message-detail">
-              <span class="bold">User Name</span>,
-              <span> 10:02 AM</span>
-          </div>
-        </div>
-      </div>
-      <div class="padding-box">
+      <div class="event-view-options">
+        <div class="attendance-label">Attendance:</div>
+        <a class="button button-small attendance-status"><span class="float-left ion-android-checkbox confirmed"></span> Going <span class="ion-arrow-down-b"></span></a>
       </div>
     </div>
   </ion-content>
-  <div class="event-messaging-box">
-    <div class="text-entry-container">
-      <textarea msd-elastic="\n" ng-model="message" class="text-entry">
-      </textarea>
-      <button class="button button-clear button-positive" id="sendMessage">
-        Send
-      </button>
-    </div>
-  </div>
 </ion-view>

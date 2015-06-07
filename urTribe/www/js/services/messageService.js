@@ -1,7 +1,7 @@
 var urtribeServices = angular.module('urtribe.services', [])
 urtribeServices.factory('MessageService', function ($ionicPopup, $rootScope) {
   var storageRef;
-  var applicationKey = "kSVcgZ";
+  var applicationKey = "rUaRaB";
   var authenticationToken = "PhoneTestUserToken";
   var userTableName = "PhoneTestUser";
   var eventTableSubscriptions = [];
@@ -12,6 +12,7 @@ urtribeServices.factory('MessageService', function ($ionicPopup, $rootScope) {
     //connect to realtime framework
     authenticationToken = token;
     userTableName = userTable;
+    console.log(userTable);
     MessageService.connectRealTime(function(response){
       if(response.error)
       {
@@ -34,8 +35,9 @@ urtribeServices.factory('MessageService', function ($ionicPopup, $rootScope) {
     });
 
     tableRef.off("update", function(itemSnapshot) {
-      MessageService.initialize(userTable,token);
     });
+
+    MessageService.initialize(userTable,token);
   }
 
   //handle notifications
@@ -54,6 +56,7 @@ urtribeServices.factory('MessageService', function ($ionicPopup, $rootScope) {
       }
       //Create a reference to the users table
       var tableRef = storageRef.table(userTableName);
+      console.log("auth success");
       callback(JSON.stringify({"success": "User authenticated"}));
     });
   }
@@ -72,11 +75,14 @@ urtribeServices.factory('MessageService', function ($ionicPopup, $rootScope) {
 
   function listenUserTable(callback)
   {
-    var tableRef = storageRef.table("PhoneTestUser", function (error){
+    console.log("listen to user table");
+    var tableRef = storageRef.table(userTableName, function (error){
+      console.log(error);
       callback(JSON.stringify({"error": error}));
     });
 
     tableRef.on("update", function(itemSnapshot) {
+      console.log("item placed");
       if(itemSnapshot!=null)
       {
         var $notificationScope = $rootScope.$new(true);

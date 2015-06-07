@@ -9,7 +9,6 @@ urtribeServices.factory('APIService', function ($http, Event, Contact, UserServi
     $http.get(endpoint + '/api/users/'+ UserService.userToken + '/Events').success(function(events) {
         //TODO error handling
         var eventsList = [];
-
         angular.forEach(events.Data.EventList, function(value) {
           eventsList.push(Event.build(value));
         });
@@ -31,7 +30,7 @@ urtribeServices.factory('APIService', function ($http, Event, Contact, UserServi
            reducedEventsList.push(value);
          }
        });
-       
+
        callback(reducedEventsList);
      });
   };
@@ -54,6 +53,15 @@ urtribeServices.factory('APIService', function ($http, Event, Contact, UserServi
             }
           }
         });
+        setStatus(eventsList,callback);
+    });
+  }
+
+  APIService.getEvent = function(eventID, callback) {
+    $http.get(endpoint + '/api/Users/'+ UserService.userToken + '/Events/' + eventID).success(function(events) {
+        //TODO error handling
+        var eventsList = [];
+        eventsList.push(Event.build(events.Data.Event));
         setStatus(eventsList,callback);
     });
   }
