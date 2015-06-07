@@ -147,6 +147,13 @@ urtribeControllers.controller('EventsController', function($scope, $state, $wind
 
       });
     };
+
+    //update event status
+    $scope.updateStatus = function(status, event) {
+      APIService.setAttendanceStatus(status, event.ID, function(contacts){
+        event.setAttendanceStatus = status;
+      });
+    };
 })
 
 urtribeControllers.directive('ngFocus', [function() {

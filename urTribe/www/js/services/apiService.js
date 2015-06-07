@@ -110,5 +110,18 @@ urtribeServices.factory('APIService', function ($http, Event, Contact, UserServi
     });
   }
 
+  APIService.setAttendanceStatus = function (status, eventID, callback)
+  {
+    $http.post(endpoint + '/api/Users/' + UserService.userToken + '/events/' + eventID + "/Status/" + status).
+      success(function(response) {
+        console.log("attendance status set success");
+        callback(response);
+    }).
+    error(function(response) {
+      console.log("attendance status set error");
+      callback(response);
+    });
+  }
+
   return APIService;
 });

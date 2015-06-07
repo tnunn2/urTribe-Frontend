@@ -9,3 +9,7 @@ curl -H "Content-Type: application/json" -X GET -d '' http://ec2-52-24-59-76.us-
 
 //Get single event details
 http://ec2-52-24-59-76.us-west-2.compute.amazonaws.com:9058/api/Users/d2f02c83-2670-42f9-bfa7-3bb506e9bcac/events/a3884ca4-8dab-45cd-ae04-b36edf561dab
+
+//set event status
+
+curl -H "Content-Type: application/json" -X POST -d '' http://ec2-52-24-59-76.us-west-2.compute.amazonaws.com:9058/api/events/a3884ca4-8dab-45cd-ae04-b36edf561dab/Users/d2f02c83-2670-42f9-bfa7-3bb506e9bcac/Status/Going
