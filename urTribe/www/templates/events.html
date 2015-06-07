@@ -9,7 +9,7 @@
       <div class="row">
         <div class="col-90">
           <div class="title">
-            <a href="#/app/event:{{event.EventID}}">{{event.Name}}</a>
+            <a href="#/app/event:{{event.ID}}">{{event.Name}}</a>
           </div>
           <div class="time">
             <span class="ion-clock"></span> {{ event.Time }}
@@ -28,7 +28,7 @@
           <div class="event-cta">
             <div class="button-bar">
               <!--<a class="button button-small">12 Attending</a>-->
-              <a class="button button-small button-cta" href="#/app/event:1">More</a>
+              <a class="button button-small button-cta" href="#/app/event:{{event.ID}}">More</a>
             </div>
           </div>
         </div>
