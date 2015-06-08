@@ -1,5 +1,5 @@
 var urtribeServices = angular.module('urtribe.services', [])
-urtribeServices.factory('MessageService', function ($ionicPopup, $rootScope) {
+urtribeServices.factory('MessageService', function ($ionicPopup, $rootScope, APIService) {
   var storageRef;
   var applicationKey = "rUaRaB";
   var authenticationToken = "PhoneTestUserToken";
@@ -83,20 +83,36 @@ urtribeServices.factory('MessageService', function ($ionicPopup, $rootScope) {
 
     tableRef.on("update", function(itemSnapshot) {
       console.log("item placed");
+      var myPopup;
       if(itemSnapshot!=null)
       {
         var $notificationScope = $rootScope.$new(true);
         $notificationScope.item = itemSnapshot.val();
-        var myPopup = $ionicPopup.show({
-          templateUrl: 'templates/eventInviteNotificationPopup.html',
-          title: "You're Invited!",
-          scope: $notificationScope,
-          buttons: [
-            { text: 'Close' }
-          ]
-        });
-        myPopup.then(function(res) {
-          console.log('Tapped!', res);
+        console.log($notificationScope.item);
+        $notificationScope.item.invited = $notificationScope.item["Invited By"];
+        $notificationScope.updateStatus = function(status, event){
+          console.log("updating")
+          APIService.setAttendanceStatus(status, event.ID, function(contacts){
+            event.setAttendanceStatus = status;
+            myPopup.close();
+          });
+        };
+        $notificationScope.close = function(){
+          myPopup.close();
+        }
+        APIService.getEvent($notificationScope.item.id, function(events){
+          $notificationScope.event = events[0];
+          myPopup = $ionicPopup.show({
+            templateUrl: 'templates/eventInviteNotificationPopup.html',
+            title: "You're Invited!",
+            scope: $notificationScope,
+            buttons: [
+              { text: 'Close' }
+            ]
+          });
+          myPopup.then(function(res) {
+            console.log('Tapped!', res);
+          });
         });
       }
     });

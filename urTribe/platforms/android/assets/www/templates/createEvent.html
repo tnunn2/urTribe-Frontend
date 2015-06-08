@@ -1,15 +1,16 @@
 
 <ion-modal-view>
-  <form name="createEvent_form" novalidate ng-submit="submitEvent(eventInfo,createEvent_form.$valid)" >
+
     <ion-header-bar class="bar-positive" ng-style="{'visibility': !showContacts ?'visible':'hidden'}">
       <div class="buttons">
         <button class="button button-clear" ng-click="closeCreateEvent($event)">Close</button>
       </div>
       <h1 class="title">Create Event</h1>
       <div class="buttons">
-        <button type="submit" class="button button-clear">Submit</button>
+        <button type="button" ng-click="$parent.submitEvent(eventInfo,createEvent_form.$valid)" class="button button-clear">Submit</button>
       </div>
     </ion-header-bar>
+    <form name="createEvent_form" novalidate >
     <ion-content>
       <div class="list">
         <label class="item item-input">

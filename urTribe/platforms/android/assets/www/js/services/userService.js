@@ -10,6 +10,5 @@ urtribeServices.factory('UserService', function ($http, Event) {
     this.userToken = userToken;
   };
 
-
   return UserService;
 });

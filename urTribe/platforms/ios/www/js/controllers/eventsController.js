@@ -42,6 +42,10 @@ urtribeControllers.controller('EventsController', function($scope, $state, $wind
 
     //Get User Events
     APIService.getEvents(function(events){
+      events.sort(function(a, b) {
+        return new Date(a.Time) - new Date(b.Time)
+      });
+      console.log(events);
       $scope.Events = events;
     });
 
@@ -52,6 +56,7 @@ urtribeControllers.controller('EventsController', function($scope, $state, $wind
         var collectionTime = $filter('date')(event.eventStartTime, 'HH:mm:ss');
         var timeString = collectionDate+' '+collectionTime;
         var time = new Date(timeString.replace(/-/g, "/")).toISOString();
+        console.log(time);
         var eventData = {
           "ID": "",
           "Name": event.eventName,
@@ -74,11 +79,13 @@ urtribeControllers.controller('EventsController', function($scope, $state, $wind
             APIService.inviteContacts(eventID, $scope.contactsSelected, function(response){
               if(response.Status == "success") {
                 //TODO message user of success
+                console.log(response);
                 $scope.showPopup();
                 console.log("Contacts invited");
               }
               else {
                 //TODO handle error
+                console.log(response);
                 $scope.showPopup();
                 console.log("Contacts invited error");
               }
@@ -86,6 +93,7 @@ urtribeControllers.controller('EventsController', function($scope, $state, $wind
           }
           else {
             //TODO handle error
+            console.log(response);
             $scope.showPopup();
             console.log("Event created error");
           }
@@ -142,6 +150,13 @@ urtribeControllers.controller('EventsController', function($scope, $state, $wind
       });
       alertPopup.then(function(res) {
 
+      });
+    };
+
+    //update event status
+    $scope.updateStatus = function(status, event) {
+      APIService.setAttendanceStatus(status, event.ID, function(contacts){
+        event.setAttendanceStatus = status;
       });
     };
 })

@@ -1,46 +1,34 @@
 <ion-view cache-view="false" view-title="Events">
-  <ion-content>
+  <ion-content class="has-footer">
     <div class="row">
-      <div class="col col-50">
-        <div class="btn-group block-dropdown" dropdown>
-          <button type="button" class="btn btn-default btn-block dropdown-toggle" dropdown-toggle>
-            {{selectedEventType.name}}
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" role="menu">
-            <li ng-repeat="eventType in eventTypes">
-              <a ng-click="setEventType(eventType)">{{eventType.name}}</a>
-            </li>
-          </ul>
-        </div>
-      </div>
       <div class="col">
         <button class="button button-block icon-left ion-plus-circled button-dark" ng-click="createEvent()">Create</button>
       </div>
     </div>
-    <div ng-repeat="event in Events" class="event-overview" id="{{event.ID}}">
+    <div ng-repeat="event in Events | orderBy:'event.date':true" class="event-overview" id="{{event.ID}}" ng-if="event.AttendanceStatus != 'Declined'">
       <div class="row">
         <div class="col-90">
           <div class="title">
-            <a href="#/app/event:{{event.EventID}}">{{event.Name}}</a>
+            <a href="#/app/event:{{event.ID}}">{{event.Name}}</a>
           </div>
           <div class="time">
-            <span class="ion-clock"></span> {{ event.Time | date : "MMMM d 'at' h:mm a"}}
+            <span class="ion-clock"></span> {{ event.Time }}
           </div>
           <div class="location">
             <span class="ion-location"></span> <a href="{{event.getMapURL()}}">{{event.Location}}</a>
           </div>
         </div>
         <div class="col-10 attendance">
-          <span ng-if="event.AttendanceStatus == 'Attending'" class="ion-android-checkbox confirmed"></span>
+          <span ng-if="event.AttendanceStatus == 'Going'" class="ion-android-checkbox confirmed"></span>
+          <span ng-if="event.AttendanceStatus == 'Maybe'" class="maybe"><img src="/img/maybe.png"/></span>
         </div>
       </div>
-      <div class="row" ng-if="event.AttendanceStatus == 'Attending' || event.AttendanceStatus == 'Maybe'">
+      <div class="row" ng-if="event.AttendanceStatus == 'Going' || event.AttendanceStatus == 'Maybe'">
         <div class="col">
           <div class="event-cta">
             <div class="button-bar">
               <!--<a class="button button-small">12 Attending</a>-->
-              <a class="button button-small button-cta" href="#/app/event:1">More</a>
+              <a class="button button-small button-cta" href="#/app/event:{{event.ID}}">More</a>
             </div>
           </div>
         </div>
@@ -49,9 +37,9 @@
         <div class="col">
           <div class="event-cta">
             <div class="button-bar">
-              <a class="button button-small">Going</a>
-              <a class="button button-small">Maybe</a>
-              <a class="button button-small">Decline</a>
+              <a class="button button-small" ng-click="event.AttendanceStatus = 'Going'; updateStatus('Going', event)">Going</a>
+              <a class="button button-small" ng-click="event.AttendanceStatus = 'Maybe'; updateStatus('Maybe', event)">Maybe</a>
+              <a class="button button-small" ng-click="event.AttendanceStatus = 'Declined'; updateStatus('Declined', event)">Decline</a>
             </div>
           </div>
         </div>

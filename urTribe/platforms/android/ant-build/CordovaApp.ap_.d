@@ -47,6 +47,7 @@
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/css/style.css \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/data/contacts.json \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/data/events.json \
+/Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/data/sample-api-curl.txt \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/fonts/glyphicons-halflings-regular.eot \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/fonts/glyphicons-halflings-regular.svg \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/fonts/glyphicons-halflings-regular.ttf \
@@ -56,6 +57,7 @@
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/fonts/ionicons.svg \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/fonts/ionicons.ttf \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/fonts/ionicons.woff \
+/Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/img/maybe.png \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/img/UrTribe-logo.png \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/js/app.js \
 /Users/bdouglas/documents/personal/masters/urtribe/code/front-new/urtribe/platforms/android/assets/www/js/controllers \

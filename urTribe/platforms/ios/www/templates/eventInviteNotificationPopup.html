@@ -1,24 +1,22 @@
 <div class="event-notification-popup">
   <div class="inviter">
-    {{item.inviterName}} invited you to:
+    {{item["Invited By"]}} invited you to:
   </div>
   <div class="title">
-    {{item.title}}
+    {{event.Name}}
   </div>
   <div class="time">
-    <span class="ion-clock"></span> {{item.dateTime}}
+    <span class="ion-clock"></span> {{ event.Time }}
   </div>
   <div class="location">
-    <span class="ion-location"></span> {{item.location}}
+    <span class="ion-location"></span> {{event.Location}}
   </div>
-  <button class="button button-outline button-calm button-small details-btn">
-    Details
-  </button>
+  <a class="button button-outline button-calm button-small details-btn" href="#/app/event:{{event.ID}}" ng-click="close()">Details</a>
 </div>
 <div class="event-cta">
   <div class="button-bar">
-    <a class="button button-small">Going</a>
-    <a class="button button-small">Maybe</a>
-    <a class="button button-small">Decline</a>
+    <a class="button button-small" ng-click="event.AttendanceStatus = 'Going'; updateStatus('Going', event)">Going</a>
+    <a class="button button-small" ng-click="event.AttendanceStatus = 'Maybe'; updateStatus('Maybe', event)">Maybe</a>
+    <a class="button button-small" ng-click="event.AttendanceStatus = 'Declined'; updateStatus('Declined', event)">Decline</a>
   </div>
 </div>

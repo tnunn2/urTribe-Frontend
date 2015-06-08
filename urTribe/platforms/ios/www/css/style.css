@@ -313,6 +313,11 @@ ion-side-menu .item
   z-index: 5000;
 }
 
+.event-view-options
+{
+  float:right;
+}
+
 .event-view-options .attendance-status span
 {
   font-size: 22px;
@@ -518,4 +523,30 @@ ion-side-menu .item
   width: 95px;
   float:right;
   margin-bottom: 34px;
+}
+
+.event-view-options .attendance-status span.float-left
+{
+  float:left;
+  margin-right:8px;
+}
+
+.event-view-options .attendance-status span.ion-arrow-down-b
+{
+  margin-left:8px;
+}
+
+.eventTitle
+{
+  text-align:left;
+  font-weight:bold;
+  font-size: 21px;
+  padding: 17px;
+}
+
+.attendance-label
+{
+  float:left;
+  margin-top:5px;
+  margin-right: 3px;
 }

@@ -96,7 +96,7 @@ var urTribeApp = angular.module('urtribe', ['ionic', 'urtribe.controllers'])
         templateUrl: "templates/event.html",
         controller: 'EventController',
         resolve: {
-          event: function($stateParams) {
+          eventid: function($stateParams) {
             return $stateParams.eventID;
           }
         }
