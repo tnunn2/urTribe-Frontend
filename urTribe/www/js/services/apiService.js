@@ -1,7 +1,7 @@
 urtribeServices.factory('APIService', function ($http, Event, Contact, UserService, $q) {
   var APIService = {};
-  //var endpoint = 'http://ec2-52-24-59-76.us-west-2.compute.amazonaws.com:9058';
-  var endpoint = '/proxy';
+  var endpoint = 'http://ec2-52-24-59-76.us-west-2.compute.amazonaws.com:9058';
+  //var endpoint = '/proxy';
   //Get events overview for events listing
 
   APIService.getEvents = function(callback) {

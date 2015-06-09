@@ -8,11 +8,5 @@
   "watchPatterns": [
     "www/**/*",
     "!www/lib/**/*"
-  ],
-  "proxies": [
-    {
-      "path": "/proxy",
-      "proxyUrl": "http://ec2-52-24-59-76.us-west-2.compute.amazonaws.com:9058"
-    }
   ]
 }
