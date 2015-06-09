@@ -7,6 +7,9 @@ describe('Message Service Unit Tests', function(){
     beforeEach(inject(function (MessageService) {
       _messageService = MessageService;
     }));
+    it('test framework', function(){
+      expects("test").to.equal("test");
+    });
 
     /*it('can get instance of Message Service', function() {
         expect(_messageService).to.exists;
