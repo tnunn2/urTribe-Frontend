@@ -8,9 +8,9 @@ describe('Message Service Unit Tests', function(){
       _messageService = MessageService;
     }));
 
-    it('can get instance of Message Service', function() {
+    /*it('can get instance of Message Service', function() {
         expect(_messageService).to.exists;
-    });
+    });*/
 
     /*it('can connect and authenticate user with RealTime Framework', function(done){
       _messageService.connectRealTime(function(response){
