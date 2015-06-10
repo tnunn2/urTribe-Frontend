@@ -1,8 +1,8 @@
 //Create User
-curl -H "Content-Type: application/json" -X POST -d '{"ID":null,"Name":"Alice Kate","InvitesChannel":null}' http://ec2-52-24-59-76.us-west-2.compute.amazonaws.com:9058/api/users
+curl -H "Content-Type: application/json" -X POST -d '{"ID":null,"Name":"Jimmy James","InvitesChannel":null}' http://ec2-52-24-59-76.us-west-2.compute.amazonaws.com:9058/api/users
 
 //Make contacts friends
-curl -H "Content-Type: application/json" -X POST -d '' http://ec2-52-24-59-76.us-west-2.compute.amazonaws.com:9058/api/users/f58db150-15d8-4084-9e89-5a3e2ca7b9e7/Contacts/d2f02c83-2670-42f9-bfa7-3bb506e9bcac
+curl -H "Content-Type: application/json" -X POST -d '' http://ec2-52-24-59-76.us-west-2.compute.amazonaws.com:9058/api/users/521e514f-9fd6-4969-a098-a66465c228c9/Contacts/2145873e-1a83-4f12-9f5f-b9ec5fdacba5
 
 //Get user attendance status
 curl -H "Content-Type: application/json" -X GET -d '' http://ec2-52-24-59-76.us-west-2.compute.amazonaws.com:9058/api/events/a3884ca4-8dab-45cd-ae04-b36edf561dab/Users/d2f02c83-2670-42f9-bfa7-3bb506e9bcac/Status/

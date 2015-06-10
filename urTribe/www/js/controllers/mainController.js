@@ -7,8 +7,8 @@ urtribeControllers.controller('MainController', function($scope, $ionicModal, $i
   };
 
   $scope.Users = [
-        {name: 'Alice Kate', token:"f58db150-15d8-4084-9e89-5a3e2ca7b9e7"},
-        {name: 'Jimmy James', token:"d2f02c83-2670-42f9-bfa7-3bb506e9bcac"}
+        {name: 'Alice Kate', token:"2145873e-1a83-4f12-9f5f-b9ec5fdacba5"},
+        {name: 'Jimmy James', token:"521e514f-9fd6-4969-a098-a66465c228c9"}
         ];
 
   $scope.userSelected = $scope.Users[0];
