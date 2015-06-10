@@ -13,3 +13,5 @@ http://ec2-52-24-59-76.us-west-2.compute.amazonaws.com:9058/api/Users/d2f02c83-2
 //set event status
 
 curl -H "Content-Type: application/json" -X POST -d '' http://ec2-52-24-59-76.us-west-2.compute.amazonaws.com:9058/api/Users/d2f02c83-2670-42f9-bfa7-3bb506e9bcac/events/a3884ca4-8dab-45cd-ae04-b36edf561dab/Status/Invited
+
+curl -H "Content-Type: application/json" -X GET -d '' http://ec2-52-24-59-76.us-west-2.compute.amazonaws.com:9058/api/Users/f58db150-15d8-4084-9e89-5a3e2ca7b9e7/Events/7f9db556-f7fb-4913-8e00-88ff90cd1571

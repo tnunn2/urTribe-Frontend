@@ -20,7 +20,7 @@
         </div>
         <div class="col-10 attendance">
           <span ng-if="event.AttendanceStatus == 'Going'" class="ion-android-checkbox confirmed"></span>
-          <span ng-if="event.AttendanceStatus == 'Maybe'" class="maybe"><img src="/img/maybe.png"/></span>
+          <span ng-if="event.AttendanceStatus == 'Maybe'" class="maybe"><img src="img/maybe.png"/></span>
         </div>
       </div>
       <div class="row" ng-if="event.AttendanceStatus == 'Going' || event.AttendanceStatus == 'Maybe'">
